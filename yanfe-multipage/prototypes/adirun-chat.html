@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Chat — adidas Running</title>
+<style>
+  :root{
+    --bg:#eae7e0;
+    --phone:#0a0a0a;
+    --screen:#ffffff;
+    --ink:#111111;
+    --ink-soft:#6b6b6b;
+    --bubble-bot:#eef0f2;
+    --bubble-user:#eef0f2;
+    --bubble-user-ink:#111111;
+    --line:#e2e2e2;
+    --accent:#0071ae;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;
+    height:100%;
+    background:var(--bg);
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    --adidas-logo:url(data:image/png;base64,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);
+  }
+  .stage{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:22px;
+  }
+  .phone{
+    width:340px;
+    height:700px;
+    background:var(--phone);
+    border-radius:46px;
+    padding:14px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.45), 0 0 0 1px rgba(0,0,0,.05);
+    position:relative;
+  }
+  .notch{
+    position:absolute;
+    top:14px; left:50%;
+    transform:translateX(-50%);
+    width:120px; height:26px;
+    background:var(--phone);
+    border-bottom-left-radius:16px;
+    border-bottom-right-radius:16px;
+    z-index:5;
+  }
+  .screen{
+    background:var(--screen);
+    width:100%; height:100%;
+    border-radius:32px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+  }
+  .windowbar{
+    flex-shrink:0;
+    padding:10px 14px;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:10px;
+    border-bottom:1px solid var(--line);
+  }
+  .windowbar .ctrl{
+    width:22px;height:22px;
+    border:1px solid #d8d8d8;
+    border-radius:5px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;
+    color:#333;
+    font-weight:400;
+    line-height:1;
+  }
+  .topbar{
+    padding:16px 20px 12px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-shrink:0;
+  }
+  .topbar .title{
+    font-size:12px;
+    letter-spacing:.08em;
+    color:var(--ink);
+    font-weight:700;
+  }
+  .topbar .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:#39c463;
+    box-shadow:0 0 0 3px rgba(57,196,99,.15);
+  }
+  .topbar .status{
+    display:flex;align-items:center;gap:6px;
+    font-size:10px;color:var(--ink-soft);
+  }
+  .thread{
+    flex:1;
+    overflow-y:hidden;
+    padding:18px 16px 10px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .row{
+    display:flex;
+    align-items:flex-end;
+    gap:8px;
+    opacity:0;
+    transform:translateY(10px);
+  }
+  .row.show{
+    animation:rise .38s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  @keyframes rise{
+    to{opacity:1; transform:translateY(0);}
+  }
+  .row.bot{justify-content:flex-start;}
+  .row.user{justify-content:flex-end;}
+  .avatar{
+    width:28px;height:28px;border-radius:50%;
+    flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .avatar.bot{background:#111;}
+  .avatar.bot .logo{
+    width:16px;height:14.5px;
+    background:#fff;
+    -webkit-mask-image:var(--adidas-logo);
+    -webkit-mask-size:contain;
+    -webkit-mask-repeat:no-repeat;
+    -webkit-mask-position:center;
+    mask-image:var(--adidas-logo);
+    mask-size:contain;
+    mask-repeat:no-repeat;
+    mask-position:center;
+  }
+  .avatar.user{background:var(--accent);}
+  .avatar.user svg{width:14px;height:14px;}
+  .bubble{
+    max-width:74%;
+    padding:11px 14px;
+    font-size:12.5px;
+    line-height:1.45;
+    border-radius:18px;
+  }
+  .bot .bubble{
+    background:var(--bubble-bot);
+    color:var(--ink);
+    border-bottom-left-radius:6px;
+  }
+  .user .bubble{
+    background:var(--bubble-user);
+    color:var(--bubble-user-ink);
+    border-bottom-right-radius:6px;
+  }
+  .chips{
+    background:var(--bubble-bot);
+    border-bottom-left-radius:6px;
+    border-radius:18px;
+    padding:12px;
+    display:flex; flex-direction:column; gap:8px;
+    max-width:78%;
+  }
+  .row.chips-row{ align-items:flex-end; }
+  .chip{
+    border:1.5px solid var(--ink);
+    padding:9px 14px;
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:.01em;
+    text-transform:uppercase;
+    border-radius:0;
+    background:#fff;
+    align-self:flex-start;
+  }
+  .options-card{
+    background:#f2f4f4;
+    border-radius:16px;
+    border-bottom-left-radius:6px;
+    padding:16px 14px;
+    max-width:84%;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .options-heading{
+    font-size:13px;
+    color:#2b2b2b;
+    margin:0 2px 2px;
+  }
+  .option-row{
+    background:#fff;
+    border:1px solid #d9dcdc;
+    border-radius:0;
+    padding:11px 14px;
+    font-size:12.5px;
+    color:#1c1c1c;
+    transition:background .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .option-row.selected{
+    background:#111;
+    border-color:#111;
+    color:#fff;
+  }
+  .link{
+    text-decoration:underline;
+    text-underline-offset:2px;
+  }
+  .typing{
+    display:flex; align-items:center; gap:8px;
+    opacity:0;
+  }
+  .typing.show{ animation:rise .3s ease forwards; }
+  .typing .bubble{
+    background:var(--bubble-bot);
+    display:flex; align-items:center; gap:4px;
+    padding:12px 14px;
+  }
+  .typing span{
+    width:5px;height:5px;border-radius:50%;
+    background:#9a9a9a;
+    animation:blink 1.1s infinite ease-in-out;
+  }
+  .typing span:nth-child(2){animation-delay:.15s;}
+  .typing span:nth-child(3){animation-delay:.3s;}
+  @keyframes blink{
+    0%,80%,100%{opacity:.25; transform:translateY(0);}
+    40%{opacity:1; transform:translateY(-2px);}
+  }
+  .inputbar{
+    flex-shrink:0;
+    padding:12px 14px 18px;
+    border-top:1px solid var(--line);
+    display:flex; align-items:center; gap:10px;
+  }
+  .inputbar .field{
+    flex:1;
+    height:42px;
+    background:#ffffff;
+    border:1px solid #dcdcdc;
+    border-radius:0;
+    display:flex;
+    align-items:center;
+    padding:0 18px;
+    font-size:12.5px;
+    color:#9a9a9a;
+  }
+  .field-placeholder{ color:#9a9a9a; }
+  .field-text{ color:#111; }
+  .field-cursor{
+    display:inline-block;
+    width:1px; height:14px;
+    background:#111;
+    margin-left:1px;
+    vertical-align:middle;
+    opacity:0;
+  }
+  .field-cursor.on{
+    animation:cursorBlink 1s steps(1) infinite;
+  }
+  @keyframes cursorBlink{
+    0%,50%{opacity:1;}
+    51%,100%{opacity:0;}
+  }
+  .send.pressed{
+    background:#111;
+  }
+  .send.pressed svg line, .send.pressed svg polyline{
+    stroke:#fff;
+  }
+  .inputbar .send{
+    width:42px;height:42px;border-radius:0;
+    border:2px solid #111;
+    background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    font-size:15px;
+    color:#111;
+    transition:background .15s ease;
+  }
+  .caption{
+    color:#4a4a45;
+    font-size:11px;
+    letter-spacing:.02em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .replay{
+    border:1px solid #4a4a45;
+    background:transparent;
+    color:#2b2b28;
+    font-size:11px;
+    letter-spacing:.02em;
+    padding:6px 12px;
+    border-radius:20px;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .replay:hover{ background:#2b2b28; color:#fff; }
+  @media (prefers-reduced-motion: reduce){
+    .row, .typing{ animation: none !important; opacity:1 !important; transform:none !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen">
+        <div class="windowbar">
+          <div class="ctrl">–</div>
+          <div class="ctrl">✕</div>
+        </div>
+        <div class="topbar">
+          <div class="title">CHAT</div>
+          <div class="status"><span class="dot"></span>Agent connected</div>
+        </div>
+        <div class="thread" id="thread"></div>
+        <div class="inputbar">
+          <div class="field" id="msgField"><span id="fieldText" class="field-placeholder">Type your message</span><span id="fieldCursor" class="field-cursor"></span></div>
+          <div class="send" id="sendBtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><line x1="4" y1="12" x2="20" y2="12" stroke="#111" stroke-width="1.6"/><polyline points="14,6 20,12 14,18" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="caption">
+      <span id="statusText">Playing conversation…</span>
+      <button class="replay" id="replayBtn">Replay</button>
+    </div>
+  </div>
+
+<script>
+const thread = document.getElementById('thread');
+const statusText = document.getElementById('statusText');
+const replayBtn = document.getElementById('replayBtn');
+const loopEnabled = true;
+let isPlaying = false;
+
+const script = [
+  { who:'bot', options:{ heading:'Please select your reason for contacting us', items:['Existing order','Returns and refunds','Product information','Adidas running','Other'], selectIndex:3 } },
+  { who:'user', text:'Adidas running', fromSelection:true },
+  { who:'bot', text:'Please describe your issue so we can connect you with the right agent' },
+  { who:'user', text:'Help with running app' },
+  { who:'bot', text:'Thank you! I\'m connecting you with the next available agent. Please don\'t close this window' },
+  { who:'user', text:'adidas Running' },
+  { who:'bot', text:'For questions about the adidas Running app, please check the <span class="link">adidas Running FAQs</span>' },
+];
+
+function botAvatar(){
+  const d = document.createElement('div');
+  d.className = 'avatar bot';
+  d.innerHTML = '<span class="logo"></span>';
+  return d;
+}
+function userAvatar(){
+  const d = document.createElement('div');
+  d.className = 'avatar user';
+  d.innerHTML = '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="3.4" stroke="white" stroke-width="1.6"/><path d="M5.5 19.5c1-3.6 3.6-5.6 6.5-5.6s5.5 2 6.5 5.6" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg>';
+  return d;
+}
+
+function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+const fieldText = document.getElementById('fieldText');
+const fieldCursor = document.getElementById('fieldCursor');
+const sendBtn = document.getElementById('sendBtn');
+const PLACEHOLDER = 'Type your message';
+
+async function typeUserMessage(text){
+  fieldText.className = 'field-text';
+  fieldText.textContent = '';
+  fieldCursor.classList.remove('on');
+  fieldCursor.style.opacity = '1';
+
+  for(let i = 0; i < text.length; i++){
+    fieldText.textContent += text[i];
+    await sleep(38 + Math.random()*45);
+  }
+
+  fieldCursor.classList.add('on');
+  await sleep(450);
+
+  // press send
+  sendBtn.classList.add('pressed');
+  await sleep(160);
+  sendBtn.classList.remove('pressed');
+
+  // clear field back to placeholder
+  fieldCursor.classList.remove('on');
+  fieldCursor.style.opacity = '0';
+  fieldText.className = 'field-placeholder';
+  fieldText.textContent = PLACEHOLDER;
+}
+
+async function typingIndicator(){
+  const row = document.createElement('div');
+  row.className = 'row bot typing';
+  row.appendChild(botAvatar());
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  bubble.innerHTML = '<span></span><span></span><span></span>';
+  row.appendChild(bubble);
+  thread.appendChild(row);
+  requestAnimationFrame(() => row.classList.add('show'));
+  await sleep(900);
+  row.remove();
+}
+
+async function addMessage(item){
+  const row = document.createElement('div');
+  row.className = 'row ' + item.who;
+
+  if(item.who === 'bot' && item.options){
+    row.classList.add('chips-row');
+    row.appendChild(botAvatar());
+    const card = document.createElement('div');
+    card.className = 'options-card';
+    const heading = document.createElement('div');
+    heading.className = 'options-heading';
+    heading.textContent = item.options.heading;
+    card.appendChild(heading);
+    const rows = [];
+    item.options.items.forEach((label) => {
+      const opt = document.createElement('div');
+      opt.className = 'option-row';
+      opt.textContent = label;
+      card.appendChild(opt);
+      rows.push(opt);
+    });
+    row.appendChild(card);
+    thread.appendChild(row);
+    requestAnimationFrame(() => row.classList.add('show'));
+    thread.scrollTop = thread.scrollHeight;
+    await sleep(120);
+
+    if(typeof item.options.selectIndex === 'number'){
+      await sleep(700);
+      rows[item.options.selectIndex].classList.add('selected');
+      thread.scrollTop = thread.scrollHeight;
+    }
+    return;
+  }
+
+  if(item.who === 'bot' && item.chips){
+    row.classList.add('chips-row');
+    row.appendChild(botAvatar());
+    const wrap = document.createElement('div');
+    wrap.className = 'chips';
+    item.chips.forEach(c => {
+      const chip = document.createElement('div');
+      chip.className = 'chip';
+      chip.textContent = c;
+      wrap.appendChild(chip);
+    });
+    row.appendChild(wrap);
+  } else {
+    if(item.who === 'bot') row.appendChild(botAvatar());
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.innerHTML = item.text;
+    row.appendChild(bubble);
+    if(item.who === 'user') row.appendChild(userAvatar());
+  }
+
+  thread.appendChild(row);
+  requestAnimationFrame(() => row.classList.add('show'));
+  thread.scrollTop = thread.scrollHeight;
+  await sleep(120);
+}
+
+async function playScript(){
+  if(isPlaying) return;
+  isPlaying = true;
+  replayBtn.disabled = true;
+  thread.innerHTML = '';
+  fieldText.className = 'field-placeholder';
+  fieldText.textContent = PLACEHOLDER;
+  fieldCursor.style.opacity = '0';
+  statusText.textContent = 'Playing conversation…';
+
+  for(const item of script){
+    if(item.who === 'bot'){
+      await typingIndicator();
+      await addMessage(item);
+      await sleep(550);
+    } else if(item.fromSelection){
+      await sleep(350);
+      await addMessage(item);
+      await sleep(500);
+    } else {
+      await sleep(400);
+      await typeUserMessage(item.text);
+      await addMessage(item);
+      await sleep(500);
+    }
+  }
+
+  statusText.textContent = 'Conversation finished';
+  replayBtn.disabled = false;
+  isPlaying = false;
+
+  if(loopEnabled){
+    await sleep(1800);
+    playScript();
+  }
+}
+
+replayBtn.addEventListener('click', playScript);
+playScript();
+</script>
+</body>
+</html>

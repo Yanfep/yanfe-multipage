@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refactoring a multibrand design system with AI — Yanfe</title>
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FAFBFD">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+<button class="chat-fab" aria-label="Ask YanfeLLM" data-chat-toggle>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"/></svg>
+</button>
+
+<!-- YANFELLM CHAT PANEL -->
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="chat-header-left">
+      <span class="chat-title">YANFELLM</span>
+      <span class="chat-info">i</span>
+      <div class="chat-tooltip">YanfeLLM is an AI chatbot. May contain mistakes. Responses aren't stored anywhere.</div>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Close">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <p class="chat-prompt-title">What would you like to know?</p>
+    <button class="chat-suggestion" data-q="What's your favorite project and why?">↳ What's your favorite project and why?</button>
+    <button class="chat-suggestion" data-q="How do you approach product design?">↳ How do you approach product design?</button>
+    <button class="chat-suggestion" data-q="What's your background before adidas?">↳ What's your background before adidas?</button>
+  </div>
+  <div class="chat-footer">
+    <input class="chat-input" id="chatInput" type="text" placeholder="Ask about Yanfe...">
+    <button class="chat-send" id="chatSend" aria-label="Send">↑</button>
+  </div>
+</div>
+
+<div class="page" id="page-ds">
+
+  <div class="nav">
+    <div class="nav-brand">
+      <a href="index.html" class="nav-name">YANFE</a>
+      <span class="nav-role">PRODUCT DESIGNER</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#work">WORK</a>
+      <a href="about.html">ABOUT</a>
+      <a href="#">RESUME</a>
+    </div>
+    <button class="chat-toggle" aria-label="Ask YanfeLLM" data-chat-toggle><svg class="chat-toggle-icon" width="16" height="16" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5231 29.2759C12.6685 22.5706 7.42938 17.3315 0.724097 15.4769C0.240255 15.3431 0.240255 14.657 0.724097 14.5231C7.42938 12.6685 12.6685 7.42939 14.5231 0.724099C14.6569 0.240257 15.343 0.240257 15.4769 0.724099C17.3315 7.42939 22.5706 12.6685 29.2759 14.5231C29.7597 14.657 29.7597 15.343 29.2759 15.4769C22.5706 17.3315 17.3315 22.5706 15.4769 29.2759C15.343 29.7597 14.657 29.7597 14.5231 29.2759Z" fill="currentColor"/></svg><span class="chat-toggle-label">YANFELLM</span></button>
+  </div>
+
+  <div class="project-body">
+    <div class="sidebar">
+      <a href="index.html#work" class="back">← Back</a>
+      <a href="#overview" class="section-link active">Overview</a>
+      <a href="#problem" class="section-link">Problem</a>
+      <a href="#before" class="section-link">Before everything</a>
+      <a href="#auditing" class="section-link">Auditing with AI</a>
+      <a href="#same-role" class="section-link">Same role, different values</a>
+      <a href="#same-value" class="section-link">Same value, different meaning</a>
+      <a href="#executor" class="section-link">From AI analyst to AI executor</a>
+      <a href="#building" class="section-link">Building the missing components</a>
+      <a href="#outcome" class="section-link">Outcome</a>
+      <a href="#learning" class="section-link">Learning</a>
+    </div>
+
+    <div class="project-content">
+      <header class="project-intro">
+        <div class="project-eyebrow">Adidas · Post-sales · Design system</div>
+        <h1 class="project-title">Refactoring a multibrand design system with AI</h1>
+        <div class="hero-image hero-ds">Hero image / cover</div>
+        <div class="meta-row">
+          <div><div class="label">Role</div><div class="value">[Your role]</div></div>
+          <div><div class="label">Timeline</div><div class="value">January – March 2025</div></div>
+          <div><div class="label">Team</div><div class="value">1 Product Designer<br>1 Tech Lead</div></div>
+          <div><div class="label">My Skills</div><div class="value">[Skill]<br>[Skill]<br>[Skill]</div></div>
+        </div>
+      </header>
+
+      <section id="overview" class="p-section">
+        <div class="p-eyebrow">Overview</div>
+        <h2>After adidas’ 2025 brand relaunch, two experiences that were supposed to feel connected didn’t.</h2>
+        <p>adidas and Confirmed’s post-sales flows both run as webviews embedded inside their native apps. After adidas’ 2025 brand relaunch, two experiences that were supposed to feel connected didn’t, the webviews were running on components that no longer spoke the same language.</p>
+        <p>I led the refactor of the design system, working to bring both products adidas and Confirmed, scoped to Post-sales, onto a shared token architecture without erasing what gave each brand its own identity.</p>
+        <p>AI was part of the methodology from day one. I used it to audit a file I didn’t yet fully know, and to question my own assumptions about which tokens should exist.</p>
+      </section>
+
+      <section id="problem" class="p-section">
+        <div class="p-eyebrow">Problem</div>
+        <h2>A single webview had to run across two brand contexts, without a shared language to build from.</h2>
+        <p>At the product level, shortly after a brand relaunch centered on creating a coherent experience, users moving through Post-sales on adidas and Confirmed encountered different behaviors across surfaces that were supposed to feel like part of the same ecosystem.</p>
+        <p>At the organizational level, the Post-sales team had to maintain a single webview running across two completely different brand contexts, without a shared language or token system to build from.</p>
+        <p>Underneath both problems were three different libraries required to build the Post-sales experience. Across these libraries, several generations of adidas tokens coexisted, while some components were defined almost entirely through hardcoded values. For example, adidas’ Global library had a reasonably developed token ecosystem, while Confirmed’s did not. Most of its components had no explicit tokens at all, so its design language had to be reconstructed from the components themselves before anything could be migrated.</p>
+        <figure class="p-figure">
+          <img src="images/odp-user-flow.png" alt="User flow: adidas and Confirmed native apps opening the same post-sales order-details webview, with callouts on loading, close, and the shared order management screen">
+        </figure>
+      </section>
+
+      <section id="before" class="p-section">
+        <div class="p-eyebrow">Before everything</div>
+        <h2>The components required to build Post-sales were not centralized in a single library.</h2>
+        <p>Core adidas components lived in the Global Library, Confirmed maintained its own separate library, and some more specific components, such as the size selector, lived in a dedicated Upper Funnel library.</p>
+        <p>Post-sales also had its own Lower Funnel library for components specific to its flows. As part of the audit, we identified gaps where some of the components the project needed did not exist in any of these libraries and would have to be designed and built from scratch before being added to the Lower Funnel library.</p>
+        <p>This distributed structure was one of the key constraints of the project: while global components were maintained in a central library, individual teams also owned dedicated libraries for components specific to their area. As a result, building a single Post-sales experience meant working across multiple libraries, understanding where each component belonged, and identifying which components could be reused, which needed to be adapted, and which had to be created from scratch.</p>
+        <p>Before starting the audit, I first had to define which flows and screens were actually within the scope of the project. From there, I reviewed the three libraries and brought only the components relevant to those flows into a dedicated working file. This selection was a piece of work in itself, and it happened before AI entered the process. It gave me a single source to audit through MCP, rather than having to move back and forth between three separate libraries for every comparison.</p>
+        <p>During the initial preparation and discussions, we also saw an opportunity to use the project as a pilot with the central Design System team. We deliberately kept the scope small, focusing on the Confirmed components that genuinely needed to support theming.</p>
+        <p>The pilot was not intended to remain a proof of concept. It included a real implementation, which meant the proposed architecture had to work beyond Figma and be translated into something engineering could actually build from. That required preparing a concrete handoff for engineering as part of the pilot itself.</p>
+        <figure class="p-figure">
+          <video
+            class="p-figure-video"
+            src="images/library-structure.mp4"
+            poster="images/library-structure.png"
+            autoplay
+            muted
+            loop
+            playsinline
+            disablepictureinpicture
+            onloadedmetadata="this.playbackRate = 0.7"
+            data-playback-rate="0.7"
+            aria-label="Library structure: Global library branching into Upper funnel, Lower funnel, and Product library"
+          ></video>
+        </figure>
+      </section>
+
+      <section id="auditing" class="p-section">
+        <div class="p-eyebrow">Auditing with AI</div>
+        <h2>I used AI to analyze the working file more like a dataset.</h2>
+        <p>Manually auditing a system of this size would mean opening every variant and reviewing colors, typography, spacing, and variable bindings component by component. Instead, I used AI to analyze the working file more like a dataset. Rather than asking, “What does this button look like?”, I could ask questions such as:</p>
+        <ul class="p-list">
+          <li>Which components reference variables, and which bypass the token system entirely?</li>
+          <li>Which values repeat across different states and across both brands?</li>
+          <li>Which token collections are actually being used?</li>
+          <li>Where are different naming conventions describing the same thing?</li>
+          <li>Which existing adidas tokens could already represent values that Confirmed was hardcoding?</li>
+        </ul>
+        <p>Asking these kinds of questions helped establish a fundamental constraint for everything that followed: reuse what already existed before creating anything new. Defining a technically clean naming system is the easy part. Understanding and respecting the conventions an organization has already built around its system is what ultimately makes a refactor practical, adoptable, and able to integrate into the existing ecosystem.</p>
+        <figure class="p-figure">
+          <video
+            class="p-figure-video"
+            src="images/auditing-ai.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+            disablepictureinpicture
+            aria-label="Auditing the design system working file with AI"
+          ></video>
+        </figure>
+      </section>
+
+      <section id="same-role" class="p-section">
+        <div class="p-eyebrow">Same role, different values</div>
+        <h2>What semantic language can both brands share?</h2>
+        <figure class="p-figure">
+          <img src="images/scalable-solution.png" alt="A more scalable solution: to theme semantic tokens, we need to identify visual patterns and standardise them across brands">
+        </figure>
+        <p>Comparing equivalent component states across both brands became one of the most useful parts of the audit. adidas’ primary button is black, with a dark gray hover state and a light gray disabled state. Confirmed’s is blue, with a dark blue hover state and a dark neutral disabled state. Visually, they have little in common. Semantically, they are identical: primary action, hover, disabled.</p>
+        <figure class="p-figure">
+          <img src="images/types-of-themeing.png" alt="Types of themeing: the same layout themed at base level for adidas and Confirmed">
+        </figure>
+        <p>This distinction changed the way I approached the project. The question I kept coming back to was: “What semantic language can both brands share?”</p>
+        <p><code>fill/color-fill-primary</code> could resolve to black for adidas and blue for Confirmed. Same token, same role, different value. The architecture needed to share meaning, not appearance.</p>
+        <figure class="token-panel" aria-label="Semantic themed tokens: the same token names resolving to different values for adidas and Confirmed">
+          <figcaption class="token-panel-title">Semantic (Themed)</figcaption>
+          <div class="token-panel-scroll">
+            <table class="token-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Adidas</th>
+                  <th>Confirmed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>color-fill-primary</td>
+                  <td><span class="token-chip"><i style="background:#000000"></i>color-000000-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#0a3cff"></i>color-0a3cff-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-fill-primary-inverse</td>
+                  <td><span class="token-chip"><i style="background:#ffffff"></i>color-ffffff-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#ffffff"></i>color-ffffff-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-fill-secondary</td>
+                  <td><span class="token-chip"><i style="background:#eceff1"></i>color-eceff1-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#ece8e3"></i>color-ece8e3-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-fill-secondary-hover</td>
+                  <td><span class="token-chip"><i style="background:#d9dbdd"></i>color-d9dbdd-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#e4ddd4"></i>color-e4ddd4-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-fill-disabled</td>
+                  <td><span class="token-chip"><i style="background:#d9dbdd"></i>color-d9dbdd-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#696764"></i>color-696764-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-fill-page</td>
+                  <td><span class="token-chip"><i style="background:#ffffff"></i>color-ffffff-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#ece8e3"></i>color-ece8e3-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-fill-hover</td>
+                  <td><span class="token-chip"><i style="background:#f5f5f5"></i>color-f5f5f5-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#e4ddd4"></i>color-e4ddd4-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-fill-hover-inverse</td>
+                  <td><span class="token-chip"><i style="background:#1e1e1e"></i>color-1e1e1e-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#072ab2"></i>color-072ab2-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-fill-error</td>
+                  <td><span class="token-chip"><i style="background:#e32b2b"></i>color-e32b2b-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#b83e3e"></i>color-b83e3e-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-text-primary</td>
+                  <td><span class="token-chip"><i style="background:#000000"></i>color-000000-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#333232"></i>color-333232-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-text-primary-inverse</td>
+                  <td><span class="token-chip"><i style="background:#ffffff"></i>color-ffffff-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#ffffff"></i>color-ffffff-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-text-secondary</td>
+                  <td><span class="token-chip"><i style="background:#767677"></i>color-767677-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#696764"></i>color-696764-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-text-disabled</td>
+                  <td><span class="token-chip"><i style="background:#d9dbdd"></i>color-d9dbdd-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#696764"></i>color-696764-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-text-button-disabled</td>
+                  <td><span class="token-chip"><i style="background:#000000;opacity:.3"></i>color-000000-alpha30 <em>30%</em></span></td>
+                  <td><span class="token-chip"><i style="background:#696764"></i>color-696764-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-text-button-disabled-inverse</td>
+                  <td><span class="token-chip"><i style="background:#ffffff;opacity:.3"></i>color-ffffff-alpha30 <em>30%</em></span></td>
+                  <td><span class="token-chip"><i style="background:#ffffff"></i>color-ffffff-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-text-error</td>
+                  <td><span class="token-chip"><i style="background:#e32b2b"></i>color-e32b2b-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#b83e3e"></i>color-b83e3e-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-border-primary</td>
+                  <td><span class="token-chip"><i style="background:#000000"></i>color-000000-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#333232"></i>color-333232-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-border-primary-inverse</td>
+                  <td><span class="token-chip"><i style="background:#ffffff"></i>color-ffffff-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#ffffff"></i>color-ffffff-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-border-secondary</td>
+                  <td><span class="token-chip"><i style="background:#d9dbdd"></i>color-d9dbdd-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#ccc9c4"></i>color-ccc9c4-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-border-disabled</td>
+                  <td><span class="token-chip"><i style="background:#d9dbdd"></i>color-d9dbdd-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#ccc9c4"></i>color-ccc9c4-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-border-error</td>
+                  <td><span class="token-chip"><i style="background:#e32b2b"></i>color-e32b2b-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#b83e3e"></i>color-b83e3e-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-icon-primary</td>
+                  <td><span class="token-chip"><i style="background:#000000"></i>color-000000-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#333232"></i>color-333232-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-icon-primary-inverse</td>
+                  <td><span class="token-chip"><i style="background:#ffffff"></i>color-ffffff-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#ffffff"></i>color-ffffff-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-icon-secondary</td>
+                  <td><span class="token-chip"><i style="background:#767677"></i>color-767677-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#696764"></i>color-696764-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-icon-disabled</td>
+                  <td><span class="token-chip"><i style="background:#d9dbdd"></i>color-d9dbdd-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#696764"></i>color-696764-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-icon-error</td>
+                  <td><span class="token-chip"><i style="background:#e32b2b"></i>color-e32b2b-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#b83e3e"></i>color-b83e3e-alpha100</span></td>
+                </tr>
+                <tr>
+                  <td>color-surface-neutral</td>
+                  <td><span class="token-chip"><i style="background:#ffffff"></i>color-ffffff-alpha100</span></td>
+                  <td><span class="token-chip"><i style="background:#ece8e3"></i>color-ece8e3-alpha100</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </figure>
+        <p>This principle led to a three-layer architecture:</p>
+        <div class="process-row">
+          <div class="process-step">Foundations</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Semantic tokens</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Components</div>
+        </div>
+        <p>Foundations hold shared, brand-neutral primitives such as <code>spacing-xs</code> and <code>sizing-xl</code>. Semantic tokens describe purpose — <code>fill/color-fill-primary</code>, <code>text/color-text-primary</code>, <code>border/color-border-primary</code> — and introduce brand differences through adidas and Confirmed modes. Components consume this semantic layer rather than referencing raw values directly.</p>
+        <figure class="p-figure">
+          <img src="images/action-pattern.png" alt="Action pattern: primary and secondary states for enabled, hover, and disabled, mapped to semantic tokens">
+        </figure>
+        <p>This separation between value, meaning, and implementation allowed both brands to share the same architecture without requiring them to look the same.</p>
+      </section>
+
+      <section id="same-value" class="p-section">
+        <div class="p-eyebrow">Same value, different meaning</div>
+        <h2>Two different semantic roles had been grouped under one token because they happened to land on the same color.</h2>
+        <p>The audit also surfaced the inverse problem. An existing token, <code>color-fill</code>, resolved to black, but was being used for two unrelated roles: the fill on primary buttons, and the fill on surfaces like tabs on dark backgrounds.</p>
+        <p>The primary button genuinely needed to change by brand — black for adidas, blue for Confirmed. The surface didn’t. That component only existed in adidas, so there was no Confirmed equivalent for it to resolve to.</p>
+        <p>Because both roles shared the same token, they’d become coupled. Adding a Confirmed mode to adapt the button also introduced a Confirmed value for a surface that didn’t even exist in that brand; not adding it meant the button couldn’t adapt across brands at all.</p>
+        <p>The problem wasn’t that they shared the same value. It was that two different semantic roles had been grouped under one token simply because, in adidas, they happened to land on the same color.</p>
+        <p>The fix was to split them. <code>action-fill-primary</code> became brand-sensitive, resolving through the adidas and Confirmed modes, while the surface use got its own token — a single value, with no brand modes at all.</p>
+        <p>Changing a token that was already in use came with a migration cost: existing references had to be identified, validated, and reassigned. But keeping both roles coupled would have meant future components inheriting a multibrand relationship that didn’t actually exist.</p>
+        <figure class="p-figure">
+          <img src="images/proposed-solution.png" alt="Proposed solution: fill, border, and text tokens grouped by general/brand, interaction/states, and surface">
+        </figure>
+      </section>
+
+      <section id="executor" class="p-section">
+        <div class="p-eyebrow">From AI analyst to AI executor</div>
+        <h2>The workflow settled into a loop: inspect, detect patterns, propose, review, modify, validate, refine.</h2>
+        <p>AI could sometimes work directly on the file, connected to Figma through MCP (Model Context Protocol), the layer that let it read the file’s real variables and components and apply some changes directly. It was a working partner, but it didn’t replace my work, especially since the file I was operating in wasn’t the final file, but an audit file holding only the components the project actually needed.</p>
+        <p>AI inspected local and remote variables, identified which components were bound to variables and which used hardcoded values, and helped me configure the adidas and Confirmed modes.</p>
+        <p>That removed a significant share of manual, repetitive work but more importantly, it made it possible to approach the refactor at the level of the whole system, instead of treating every component as an isolated task.</p>
+      </section>
+
+      <section id="building" class="p-section">
+        <div class="p-eyebrow">Building the missing components</div>
+        <h2>The next phase focused on building the remaining components the project still needed.</h2>
+        <p>This work was done in collaboration with the central Design System team, since anything added to a shared library had to meet their standards, not just mine. It also meant that the new components could be built on the Foundations → Semantic architecture from the start.</p>
+      </section>
+
+      <section id="outcome" class="p-section">
+        <div class="p-eyebrow">Outcome</div>
+        <h2>Both brands finally look like themselves again — and load faster everywhere they run.</h2>
+        <p>adidas and Confirmed now share a single Foundations layer and a single Semantic collection, rather than maintaining two parallel systems, while preserving their distinct visual identities through brand modes. Not every token needs an equivalent across both brands: adidas’ membership-related tokens, for example, don’t need a Confirmed counterpart.</p>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-num">40%</div>
+            <div class="stat-label">Faster load speed for 75% of users</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">29%</div>
+            <div class="stat-label">Faster load speed for 90% of users</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Global</div>
+            <div class="stat-label">Live in every market</div>
+          </div>
+        </div>
+        <p>I didn’t use AI to design the system for me. I used it to understand the system as a whole and move faster through the more mechanical parts of the work, allowing me to focus more of my attention on the decisions that genuinely required design judgment.</p>
+      </section>
+
+      <section id="learning" class="p-section">
+        <div class="p-eyebrow">Learning</div>
+        <h2>The biggest learning was understanding where AI truly adds value in Design System work.</h2>
+        <p>AI could detect repeated values across the file, but it couldn’t determine whether they represented the same concept. It could generate a clean naming structure in seconds, but it couldn’t decide whether introducing it was worth breaking conventions the organization already relied on. It could create aliases and configure modes quickly, but deciding where a token should live — and why — still required an understanding of the brands, the product, and the system around them.</p>
+        <p>Design Systems sit at the intersection of design decisions and structured data. AI proved particularly effective on the structured side: inspecting variables at scale, identifying patterns, executing changes, and validating relationships that would have taken hours to check manually.</p>
+        <p>Decisions about meaning, naming, and abstraction still required design judgment. AI made the system faster to inspect and change; it didn’t decide what the system should mean.</p>
+      </section>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-note">Designed + built by Yanfe</div>
+    <div class="footer-links"><a href="#">LinkedIn</a><a href="#">Email</a><a href="#">GitHub</a></div>
+  </div>
+</div>
+
+<script src="script.js?v=6"></script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>adiRun: Designing an AI agent — Yanfe</title>
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FAFBFD">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+<button class="chat-fab" aria-label="Ask YanfeLLM" data-chat-toggle>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"/></svg>
+</button>
+
+<!-- YANFELLM CHAT PANEL -->
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="chat-header-left">
+      <span class="chat-title">YANFELLM</span>
+      <span class="chat-info">i</span>
+      <div class="chat-tooltip">YanfeLLM is an AI chatbot. May contain mistakes. Responses aren't stored anywhere.</div>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Close">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <p class="chat-prompt-title">What would you like to know?</p>
+    <button class="chat-suggestion" data-q="What's your favorite project and why?">↳ What's your favorite project and why?</button>
+    <button class="chat-suggestion" data-q="How do you approach product design?">↳ How do you approach product design?</button>
+    <button class="chat-suggestion" data-q="What's your background before adidas?">↳ What's your background before adidas?</button>
+  </div>
+  <div class="chat-footer">
+    <input class="chat-input" id="chatInput" type="text" placeholder="Ask about Yanfe...">
+    <button class="chat-send" id="chatSend" aria-label="Send">↑</button>
+  </div>
+</div>
+
+<div class="page" id="page-ai-agent">
+
+  <div class="nav">
+    <div class="nav-brand">
+      <a href="index.html" class="nav-name">YANFE</a>
+      <span class="nav-role">PRODUCT DESIGNER</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#work">WORK</a>
+      <a href="about.html">ABOUT</a>
+      <a href="#">RESUME</a>
+    </div>
+    <button class="chat-toggle" aria-label="Ask YanfeLLM" data-chat-toggle><svg class="chat-toggle-icon" width="16" height="16" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5231 29.2759C12.6685 22.5706 7.42938 17.3315 0.724097 15.4769C0.240255 15.3431 0.240255 14.657 0.724097 14.5231C7.42938 12.6685 12.6685 7.42939 14.5231 0.724099C14.6569 0.240257 15.343 0.240257 15.4769 0.724099C17.3315 7.42939 22.5706 12.6685 29.2759 14.5231C29.7597 14.657 29.7597 15.343 29.2759 15.4769C22.5706 17.3315 17.3315 22.5706 15.4769 29.2759C15.343 29.7597 14.657 29.7597 14.5231 29.2759Z" fill="currentColor"/></svg><span class="chat-toggle-label">YANFELLM</span></button>
+  </div>
+
+  <div class="project-body">
+    <div class="sidebar">
+      <a href="index.html#work" class="back">← Back</a>
+      <a href="#overview" class="section-link active">Overview</a>
+      <a href="#problem" class="section-link">Problem</a>
+      <a href="#opportunity" class="section-link">Opportunity</a>
+      <a href="#why-ai" class="section-link">Why AI?</a>
+      <a href="#hypothesis" class="section-link">The hypothesis</a>
+      <a href="#service-design" class="section-link">Service design</a>
+      <a href="#agent-behaviour" class="section-link">Agent behaviour</a>
+      <a href="#prototyping" class="section-link">AI Prototyping &amp; trust</a>
+      <a href="#solution" class="section-link">Solution</a>
+      <a href="#impact" class="section-link">Impact</a>
+      <a href="#learning" class="section-link">Learning</a>
+    </div>
+
+    <div class="project-content">
+      <header class="project-intro">
+        <div class="project-eyebrow">Adidas Running App · AI Support · 2025</div>
+        <h1 class="project-title">adiRun: Designing an AI agent</h1>
+        <div class="hero-image hero-adirun">Hero image / cover</div>
+        <div class="meta-row">
+          <div><div class="label">Role</div><div class="value">AI / UX Designer, Product Design</div></div>
+          <div><div class="label">Timeline</div><div class="value"> October – December 2025</div></div>
+          <div><div class="label">Team</div><div class="value">1 Product Designer<br>1 Content Designer<br>1 AI Engineer<br>1 Product Manager</div></div>
+          <div><div class="label">My Skills</div><div class="value">Product Strategy<br>Product Designer<br>Research<br>Prototyping</div></div>
+        </div>
+      </header>
+
+      <section id="overview" class="p-section">
+        <div class="p-eyebrow">Overview</div>
+        <h2>adiRun turned support from a queue into a conversation.</h2>
+        <p>After Runtastic was discontinued, adidas Running support cases surged, with no self-service containment and resolution times of 2 to 5 days.</p>
+        <p>I designed and helped validate adiRun, an AI support agent created to help customers resolve common issues through conversational self-service.</p>
+        <p>My role was to identify where AI could have the greatest impact, understand how those problems were resolved by Customer Service, translate those processes into agent behaviour, and prototype and validate the conversational experience.</p>
+      </section>
+
+      <section id="problem" class="p-section">
+        <div class="p-eyebrow">Problem</div>
+        <h2>23,500 cases exposed a support model that wasn’t scaling.</h2>
+        <p>In four months, adidas Running received roughly 23,500 support cases, representing around €118,000 in support costs. Many issues were technical and contextual, and customers often waited 2 to 5 days for a resolution by email.</p>
+        <p>The challenge was not simply handling more tickets. It was helping customers solve more problems without entering the support queue in the first place.</p>
+        <p>It was to explore whether conversational AI could help customers resolve a meaningful share of these issues directly.</p>
+        <figure class="prototype-embed">
+          <iframe
+            src="prototypes/adirun-chat.html"
+            title="Existing adidas Running support chat"
+            loading="lazy"
+          ></iframe>
+        </figure>
+      </section>
+
+      <section id="opportunity" class="p-section">
+        <div class="p-eyebrow">Opportunity</div>
+        <h2>I used support data to find where AI could create the most value.</h2>
+        <p>Before designing the agent, I analyzed support data from Salesforce and Power BI to understand where self-service could create the most value.</p>
+        <p>I looked beyond case volume and combined four signals:</p>
+        <div class="signal-row">
+          <div class="signal">Volume</div>
+          <div class="signal">First-contact resolution</div>
+          <div class="signal">NPS</div>
+          <div class="signal">Average handling time</div>
+        </div>
+        <p>This surfaced cases that combined high customer pain with high operational impact, including activity-related issues, missing points and subscription problems.</p>
+        <p>This helped identify high-pain, high-impact scenarios where self-service had the strongest potential, rather than trying to automate Customer Service broadly.</p>
+        <figure class="p-figure">
+          <img src="images/adirun-cx-metrics.jpg?v=2" alt="Customer experience metrics dashboard: total cases, first-contact resolution, NPS, and non-voice average handling time by support category">
+        </figure>
+      </section>
+
+      <section id="why-ai" class="p-section">
+        <div class="p-eyebrow">Why AI?</div>
+        <h2>Customers described the same underlying issue in very different ways.</h2>
+        <p>Many support cases ended in similar resolution paths, but customers described the same underlying issue in very different ways.</p>
+        <p>Traditional scripted flows struggled with that variability. Conversational AI created an opportunity to interpret natural language while still following defined support procedures and boundaries.</p>
+      </section>
+
+      <section id="hypothesis" class="p-section">
+        <div class="p-eyebrow">The hypothesis</div>
+        <h2>Could an AI agent resolve a meaningful share of support cases end-to-end while maintaining reliable answers and safe escalation?</h2>
+        <p>We explored the experience around four capabilities:</p>
+        <div class="cap-list">
+          <div class="cap-item">
+            <div class="cap-title">Understand</div>
+            <div class="cap-desc">Can it understand what the customer is actually trying to solve?</div>
+          </div>
+          <div class="cap-item">
+            <div class="cap-title">Context</div>
+            <div class="cap-desc">Can it identify the information required to diagnose the problem?</div>
+          </div>
+          <div class="cap-item">
+            <div class="cap-title">Resolve</div>
+            <div class="cap-desc">Can it follow the appropriate resolution path?</div>
+          </div>
+          <div class="cap-item">
+            <div class="cap-title">Escalate</div>
+            <div class="cap-desc">Can it recognize when it should stop and hand the conversation to a person?</div>
+          </div>
+        </div>
+        <p>The challenge was therefore not simply designing a chatbot interface. It was defining how the system should behave across understanding, uncertainty and resolution.</p>
+      </section>
+
+      <section id="service-design" class="p-section">
+        <div class="p-eyebrow">Service design</div>
+        <h2>Before designing the AI, I mapped how humans actually solved the problem.</h2>
+        <p>With Copilot I analyzed how Customer Service agents diagnosed and resolved the priority cases: what information they needed, what decisions determined the next step and when escalation was required.</p>
+        <p>Those support flows became the behavioural requirements for adiRun.</p>
+        <div class="process-row">
+          <div class="process-step">Customer problem</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Required information</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Decision</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Resolution</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Handoff</div>
+        </div>
+        <p>Engineering then translated these requirements into the underlying integrations and agent tools.</p>
+        <figure class="p-figure">
+          <img src="images/adirun-service-design.jpg" alt="Priority support subcategories mapped from current state to a proposed future state, with questions for stakeholders">
+        </figure>
+      </section>
+
+      <section id="agent-behaviour" class="p-section">
+        <div class="p-eyebrow">Agent behaviour</div>
+        <h2>We translated support procedures into conversational behaviour.</h2>
+        <p>Together with a Content Designer, I translated those support flows into conversational behaviour.</p>
+        <p>We defined how adiRun should:</p>
+        <ul class="p-list">
+          <li>Diagnose a problem before jumping to a solution</li>
+          <li>Request missing information</li>
+          <li>Communicate what it was doing</li>
+          <li>Avoid presenting assumptions as facts</li>
+          <li>Explain next steps clearly</li>
+          <li>Hand off when it could not safely continue</li>
+        </ul>
+        <p>The objective was not to make the AI sound human. It was to make its behaviour clear, predictable and useful.</p>
+        <figure class="p-figure">
+          <img src="images/adirun-meet-agent.jpg" alt="Meet adiRun: a specialized running-app expert persona with voice rules for expertise, warmth, pace, and never-do traits">
+        </figure>
+      </section>
+
+      <section id="prototyping" class="p-section">
+        <div class="p-eyebrow">AI Prototyping &amp; trust</div>
+        <h2>The failures were more useful than the perfect conversations.</h2>
+        <p>We tested realistic support scenarios and iterated the agent instructions based on how the model behaved.</p>
+        <p>Early prototypes could jump to conclusions, make assumptions when information was missing or continue when a case should have been escalated.</p>
+        <p>Those failures helped define the guardrails for adiRun: responses needed to be grounded in available information, the agent should operate only within defined scenarios, and uncertain or unresolved cases should be handed to a person.</p>
+        <p>Handoff wasn’t a failure state. It was a safety mechanism.</p>
+      </section>
+
+      <section id="solution" class="p-section">
+        <div class="p-eyebrow">Solution</div>
+        <h2>[What you shipped, in one line]</h2>
+        <p>[How the AI agent works — what it can answer, how it hands off to a human, where it lives in the app.]</p>
+        <figure class="prototype-embed">
+          <iframe
+            src="prototypes/adirun-chat-v2.html"
+            title="adiRun support conversation"
+            loading="lazy"
+          ></iframe>
+        </figure>
+      </section>
+
+      <section id="impact" class="p-section">
+        <div class="p-eyebrow">Impact</div>
+        <h2>The pilot moved support from a 2–5 day queue toward conversational resolution.</h2>
+        <p>Before adiRun, unresolved issues typically entered an email support queue:</p>
+        <div class="process-row">
+          <div class="process-step">Customer asks for help</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Self-service fails</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Support case</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Human investigation</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Email resolution</div>
+        </div>
+        <p>Typical resolution time: 2–5 days</p>
+        <p>With adiRun, suitable issues could be handled within the same interaction:</p>
+        <div class="process-row">
+          <div class="process-step">Customer describes the problem</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">adiRun diagnoses</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Gathers context</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Follows the resolution path</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Confirms the outcome</div>
+        </div>
+        <p>If the agent could not continue safely, Customer Service remained available. The goal was not to remove humans from support, but to involve them where human judgment added value.</p>
+        <p>The US pilot tested the experience with real support cases:</p>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-num">1,426</div>
+            <div class="stat-label">Support cases</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">68.9%</div>
+            <div class="stat-label">First-contact resolution</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">30</div>
+            <div class="stat-label">NPS</div>
+          </div>
+        </div>
+        <p>The pilot showed that a meaningful share of support interactions could be handled conversationally rather than immediately entering the existing email process.</p>
+        <p>The broader business target was 75–85% containment for suitable scenarios, with the ambition of reducing resolution time from days to minutes.</p>
+      </section>
+
+      <section id="learning" class="p-section">
+        <div class="p-eyebrow">Learning</div>
+        <h2>Designing AI meant designing when the system should stop.</h2>
+        <p>The hardest part was not generating an answer. It was deciding when the agent had enough information to continue and when it needed to hand off.</p>
+        <p>Working on adiRun shifted my focus from designing what an assistant says to designing what it understands, what information it still needs, what boundaries it operates within and how it behaves under uncertainty.</p>
+        <p>Designing AI meant designing behaviour, boundaries and handoff, not just conversation.</p>
+      </section>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-note">Designed + built by Yanfe</div>
+    <div class="footer-links"><a href="#">LinkedIn</a><a href="#">Email</a><a href="#">GitHub</a></div>
+  </div>
+</div>
+
+<script src="script.js?v=6"></script>
+</body>
+</html>

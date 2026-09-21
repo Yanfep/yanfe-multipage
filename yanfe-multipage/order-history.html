@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order History redesign — Yanfe</title>
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FAFBFD">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+<button class="chat-fab" aria-label="Ask YanfeLLM" data-chat-toggle>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"/></svg>
+</button>
+
+<!-- YANFELLM CHAT PANEL -->
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="chat-header-left">
+      <span class="chat-title">YANFELLM</span>
+      <span class="chat-info">i</span>
+      <div class="chat-tooltip">YanfeLLM is an AI chatbot. May contain mistakes. Responses aren't stored anywhere.</div>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Close">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <p class="chat-prompt-title">What would you like to know?</p>
+    <button class="chat-suggestion" data-q="What's your favorite project and why?">↳ What's your favorite project and why?</button>
+    <button class="chat-suggestion" data-q="How do you approach product design?">↳ How do you approach product design?</button>
+    <button class="chat-suggestion" data-q="What's your background before adidas?">↳ What's your background before adidas?</button>
+  </div>
+  <div class="chat-footer">
+    <input class="chat-input" id="chatInput" type="text" placeholder="Ask about Yanfe...">
+    <button class="chat-send" id="chatSend" aria-label="Send">↑</button>
+  </div>
+</div>
+
+<div class="page" id="page-project">
+
+  <div class="nav">
+    <div class="nav-brand">
+      <a href="index.html" class="nav-name">YANFE</a>
+      <span class="nav-role">PRODUCT DESIGNER</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#work">WORK</a>
+      <a href="about.html">ABOUT</a>
+      <a href="#">RESUME</a>
+    </div>
+    <button class="chat-toggle" aria-label="Ask YanfeLLM" data-chat-toggle><svg class="chat-toggle-icon" width="16" height="16" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5231 29.2759C12.6685 22.5706 7.42938 17.3315 0.724097 15.4769C0.240255 15.3431 0.240255 14.657 0.724097 14.5231C7.42938 12.6685 12.6685 7.42939 14.5231 0.724099C14.6569 0.240257 15.343 0.240257 15.4769 0.724099C17.3315 7.42939 22.5706 12.6685 29.2759 14.5231C29.7597 14.657 29.7597 15.343 29.2759 15.4769C22.5706 17.3315 17.3315 22.5706 15.4769 29.2759C15.343 29.7597 14.657 29.7597 14.5231 29.2759Z" fill="currentColor"/></svg><span class="chat-toggle-label">YANFELLM</span></button>
+  </div>
+
+  <div class="project-body">
+    <div class="sidebar">
+      <a href="index.html#work" class="back">← Back</a>
+      <a href="#overview" class="section-link active">Overview</a>
+      <a href="#problem" class="section-link">Problem</a>
+      <a href="#solution" class="section-link">Solution</a>
+      <a href="#flows" class="section-link">Core Flows</a>
+      <a href="#reflection" class="section-link">Reflection</a>
+    </div>
+
+    <div class="project-content">
+      <header class="project-intro">
+        <div class="project-eyebrow">Adidas · Post-sales · [Year]</div>
+        <h1 class="project-title">Order History redesign</h1>
+        <div class="hero-image hero-orders">Hero image / cover</div>
+        <div class="meta-row">
+          <div><div class="label">Role</div><div class="value">[Your role]</div></div>
+          <div><div class="label">Timeline</div><div class="value">[Start – End]</div></div>
+          <div><div class="label">Team</div><div class="value">[Team size / roles]</div></div>
+          <div><div class="label">Skills</div><div class="value">[Skill]<br>[Skill]<br>[Skill]</div></div>
+        </div>
+      </header>
+
+      <section id="overview" class="p-section">
+        <div class="p-eyebrow">Overview</div>
+        <h2>[One-line framing of the project]</h2>
+        <p>[What this work was, who it was for, and what changed.]</p>
+      </section>
+
+      <section id="problem" class="p-section">
+        <div class="p-eyebrow">Problem</div>
+        <h2>[What was broken, in one line]</h2>
+        <p>[What you observed — data, complaints, usability issues. Keep it specific.]</p>
+        <div class="placeholder-block">[Screenshot / diagram]</div>
+      </section>
+
+      <section id="solution" class="p-section">
+        <div class="p-eyebrow">Solution</div>
+        <h2>[What you shipped, in one line]</h2>
+        <p>[How the new flow works and why it solves the problem above.]</p>
+        <div class="placeholder-block">[Screenshot / prototype]</div>
+      </section>
+
+      <section id="flows" class="p-section">
+        <div class="p-eyebrow">Core Flows</div>
+        <div class="flows-grid">
+          <div class="flow-card">
+            <div class="placeholder-block">[Flow 1]</div>
+            <div class="flow-title">[Flow name]</div>
+            <div class="flow-desc">[What this flow does and why it matters]</div>
+          </div>
+          <div class="flow-card">
+            <div class="placeholder-block">[Flow 2]</div>
+            <div class="flow-title">[Flow name]</div>
+            <div class="flow-desc">[What this flow does and why it matters]</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="reflection" class="p-section">
+        <div class="p-eyebrow">Reflection</div>
+        <h2>What I learned</h2>
+        <div class="reflection-list">
+          <div class="reflection-item"><div class="r-title">[Lesson 1, short]</div><div class="r-desc">[One or two sentences on it]</div></div>
+          <div class="reflection-item"><div class="r-title">[Lesson 2, short]</div><div class="r-desc">[One or two sentences on it]</div></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-note">Designed + built by Yanfe</div>
+    <div class="footer-links"><a href="#">LinkedIn</a><a href="#">Email</a><a href="#">GitHub</a></div>
+  </div>
+</div>
+
+<script src="script.js?v=6"></script>
+</body>
+</html>
