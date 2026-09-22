@@ -98,8 +98,31 @@ h1 em { font-style: italic; }
 .tile1 { background: linear-gradient(135deg, var(--tile1a), var(--tile1b)); }
 .tile2 { background: var(--tile2); }
 .tile3 { background: var(--tile3); }
-.tile4 { background: linear-gradient(135deg, var(--tile4a), var(--tile4b)); }
-.tile5 { background: var(--tile5); }
+.tile4 { background: #dadacc; }
+.tile-ds { position: relative; overflow: hidden; }
+.tile-ds .cover-marks {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.tile-ds .cover-marks img { height: 44px; }
+.tile-ds > div { position: relative; z-index: 1; }
+.tile5 { background: #d7f1e6; }
+.tile-adirun { position: relative; overflow: hidden; }
+.tile-adirun .tile-cover-icon {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  width: 28%;
+  min-width: 96px;
+  max-width: 180px;
+  height: auto;
+  pointer-events: none;
+}
+.tile-adirun > div { position: relative; z-index: 1; }
 .tile6 { background: linear-gradient(135deg, var(--tile6a), var(--tile6b)); }
 
 .experiments-header { padding: 96px 56px 56px 56px; max-width: 640px; }
@@ -203,9 +226,34 @@ h1 em { font-style: italic; }
   color: rgba(255,255,255,0.85);
   font-size: 15px;
 }
-.hero-image.hero-adirun { background: var(--tile5); color: var(--muted); }
-.hero-image.hero-orders,
-.hero-image.hero-ds { background: linear-gradient(135deg, var(--tile4a), var(--tile4b)); }
+.hero-image.hero-adirun {
+  background: #d7f1e6;
+  color: transparent;
+  overflow: hidden;
+}
+.hero-image.hero-adirun img {
+  width: 24%;
+  min-width: 112px;
+  max-width: 220px;
+  height: auto;
+  display: block;
+}
+.hero-image.hero-orders { background: linear-gradient(135deg, var(--tile4a), var(--tile4b)); }
+.hero-image.hero-ds {
+  background: #dadacc;
+  color: transparent;
+  overflow: hidden;
+}
+.cover-marks {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cover-marks img {
+  display: block;
+  width: auto;
+  height: 56px;
+}
 .meta-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
