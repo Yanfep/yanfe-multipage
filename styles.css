@@ -238,7 +238,10 @@ h1 em { font-style: italic; }
   height: auto;
   display: block;
 }
-.hero-image.hero-orders { background: linear-gradient(135deg, var(--tile4a), var(--tile4b)); }
+.hero-image.hero-orders {
+  background: #E7E4F5;
+  color: transparent;
+}
 .hero-image.hero-ds {
   background: #dadacc;
   color: transparent;

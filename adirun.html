@@ -161,7 +161,7 @@
       <section id="service-design" class="p-section">
         <div class="p-eyebrow">Service design</div>
         <h2>Before designing the AI, I mapped how humans actually solved the problem.</h2>
-        <p>With Copilot I analyzed how Customer Service agents diagnosed and resolved the priority cases: what information they needed, what decisions determined the next step and when escalation was required.</p>
+        <p>In Cursor, using a script and company data, I analyzed how Customer Service agents diagnosed and resolved the priority cases: what information they needed, what decisions determined the next step and when escalation was required.</p>
         <p>Those support flows became the behavioural requirements for adiRun.</p>
         <div class="process-row">
           <div class="process-step">Customer problem</div>
@@ -197,21 +197,29 @@
         <figure class="p-figure">
           <img src="images/adirun-meet-agent.jpg" alt="Meet adiRun: a specialized running-app expert persona with voice rules for expertise, warmth, pace, and never-do traits">
         </figure>
+        <figure class="p-figure">
+          <img src="images/adirun-agent-jobs.png" alt="adiRun agent jobs: Adidas Running Expert instructions, tools, and job description in the agent configuration">
+        </figure>
       </section>
 
       <section id="prototyping" class="p-section">
         <div class="p-eyebrow">AI Prototyping &amp; trust</div>
         <h2>The failures were more useful than the perfect conversations.</h2>
-        <p>We tested realistic support scenarios and iterated the agent instructions based on how the model behaved.</p>
-        <p>Early prototypes could jump to conclusions, make assumptions when information was missing or continue when a case should have been escalated.</p>
-        <p>Those failures helped define the guardrails for adiRun: responses needed to be grounded in available information, the agent should operate only within defined scenarios, and uncertain or unresolved cases should be handed to a person.</p>
-        <p>Handoff wasn’t a failure state. It was a safety mechanism.</p>
+        <p>I built and tested the proof of concept in Cognigy, iterating the agent's instructions against realistic support conversations rather than only the ones that worked well.</p>
+        <p>Early versions overstepped in predictable ways. Asked about a sore knee, the agent would suggest stretches. Asked for a training plan, it would recommend one. Neither was something adiRun should decide on its own.</p>
+        <p>Each failure became a rule. Questions about health or injury were redirected to a professional instead of answered. Questions about training were redirected to the app's pre-set workouts instead of improvised. Answers had to stay grounded in what the agent actually knew, not filled in from a guess, and adiRun had to confirm the outcome with the customer before closing a case rather than assume it.</p>
+        <figure class="p-figure">
+          <img src="images/adirun-agent-persona.png" alt="adiRun agent persona: special instructions for tone, safety, troubleshooting, and contact profile access">
+        </figure>
+        <figure class="p-figure">
+          <img src="images/adirun-knowledge-stores.png" alt="Knowledge Stores used by adiRun: Adidas, Runtastic, and a test Runtastic store">
+        </figure>
       </section>
 
       <section id="solution" class="p-section">
         <div class="p-eyebrow">Solution</div>
-        <h2>[What you shipped, in one line]</h2>
-        <p>[How the AI agent works — what it can answer, how it hands off to a human, where it lives in the app.]</p>
+        <h2>adiRun: a conversational agent that diagnoses, resolves and knows when to hand off</h2>
+        <p>adiRun sits inside the support conversation flow. It asks for the missing information before assuming anything, follows the same resolution logic Customer Service would use, and confirms the outcome before closing the conversation. When it can't resolve a case safely, it hands off to a person with the context already gathered, so the customer never has to repeat themselves.</p>
         <figure class="prototype-embed">
           <iframe
             src="prototypes/adirun-chat-v2.html"
