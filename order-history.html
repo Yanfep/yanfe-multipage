@@ -59,9 +59,15 @@
       <a href="index.html#work" class="back">← Back</a>
       <a href="#overview" class="section-link active">Overview</a>
       <a href="#problem" class="section-link">Problem</a>
-      <a href="#solution" class="section-link">Solution</a>
-      <a href="#flows" class="section-link">Core Flows</a>
-      <a href="#reflection" class="section-link">Reflection</a>
+      <a href="#research" class="section-link">Understanding why</a>
+      <a href="#opportunity" class="section-link">Opportunity</a>
+      <a href="#vision" class="section-link">Product vision</a>
+      <a href="#foundation" class="section-link">Building the foundation</a>
+      <a href="#intent" class="section-link">Designing around intent</a>
+      <a href="#mvp" class="section-link">Defining the MVP</a>
+      <a href="#results" class="section-link">Results</a>
+      <a href="#measure" class="section-link">How I would measure</a>
+      <a href="#changed" class="section-link">What changed</a>
     </div>
 
     <div class="project-content">
@@ -79,47 +85,162 @@
 
       <section id="overview" class="p-section">
         <div class="p-eyebrow">Overview</div>
-        <h2>[One-line framing of the project]</h2>
-        <p>[What this work was, who it was for, and what changed.]</p>
+        <h2>What if customers could simply explain what they needed?</h2>
+        <p>Order History is a key part of the adidas post-purchase experience, where customers can track deliveries, manage returns, check refunds, and resolve issues after making a purchase.</p>
+        <p>The project explored a broader vision for post-purchase support: what if customers could simply explain what they needed and the system could connect that need with the right information and action?</p>
+        <p>AI was part of that design vision, acting as a layer between customer intent and the existing post-sales ecosystem.</p>
+        <p>However, delivering that full vision required capabilities and integrations that were beyond the scope of a first release.</p>
+        <p>So we deliberately defined an MVP focused on building the foundation first: a modular Order History experience that made order status, products, deliveries, and post-sales actions easier to understand and use.</p>
+        <p>The MVP initially launched within Returns &amp; Refunds and reduced post-sales Customer Service contacts by 8–10%.</p>
+        <p>The AI-assisted interactions shown in this case study were part of the broader experience I designed, but were not included in the MVP.</p>
       </section>
 
       <section id="problem" class="p-section">
         <div class="p-eyebrow">Problem</div>
-        <h2>[What was broken, in one line]</h2>
-        <p>[What you observed — data, complaints, usability issues. Keep it specific.]</p>
-        <div class="placeholder-block">[Screenshot / diagram]</div>
+        <h2>Order History received more than 7 million visits, yet 64% of visitors still contacted Customer Service after using it.</h2>
+        <p>The problem was not simply a lack of information.</p>
+        <p>Most of what customers needed already existed, but it was distributed across different pages, services, and flows.</p>
+        <p>Customers had to understand what an order status meant, find the right service, and decide which action applied to their situation.</p>
+        <p>Even a simple question such as “Where is my order?” could require navigating through several parts of the experience.</p>
+        <p>In practice, the product was asking customers to understand how adidas had organised its post-sales services before they could solve their problem.</p>
+        <p>Customers arrived with a need. The experience expected them to translate that need into the right feature or flow.</p>
       </section>
 
-      <section id="solution" class="p-section">
-        <div class="p-eyebrow">Solution</div>
-        <h2>[What you shipped, in one line]</h2>
-        <p>[How the new flow works and why it solves the problem above.]</p>
-        <div class="placeholder-block">[Screenshot / prototype]</div>
+      <section id="research" class="p-section">
+        <div class="p-eyebrow">Understanding why</div>
+        <h2>Before redesigning the experience, I wanted to understand why customers came to Order History and what prevented them from resolving their needs independently.</h2>
+        <p>I led a qualitative study focused on user behaviour, not just the visual interface.</p>
+        <p>18 participants took part in unmoderated desktop usability tests across the US, UK, and Germany.</p>
+        <p>The research focused on four questions:</p>
+        <ul class="p-list">
+          <li>Do customers understand the information being shown?</li>
+          <li>Can they discover the available post-sales actions?</li>
+          <li>Can they resolve issues without contacting Customer Service?</li>
+          <li>When and why do they access Order History?</li>
+        </ul>
+        <p>Most participants had no difficulty finding their orders within My Account. The problems started once they entered Order History.</p>
+        <p>Customers struggled to identify which post-sales actions were available, the information hierarchy did not support consistent scanning, and the page structure did not reflect what they were actually paying attention to.</p>
+        <p>For almost every participant, the expected delivery date was the most important piece of information. What they needed next depended heavily on the state of the order.</p>
+        <p>When an order was still in progress, customers were mainly looking for actions. Once an order was complete, they were more often looking for information.</p>
+        <p>This led to an important insight: Order History was not simply a list of past purchases. Its purpose changed depending on what was happening with each order.</p>
+        <p>The returns flow reinforced this learning. Most participants went directly to Return or Exchange rather than exploring the order details first.</p>
+        <p>When the right action was visible, customers knew what they wanted to do. The challenge was making the right information and actions visible at the right moment.</p>
       </section>
 
-      <section id="flows" class="p-section">
-        <div class="p-eyebrow">Core Flows</div>
-        <div class="flows-grid">
-          <div class="flow-card">
-            <div class="placeholder-block">[Flow 1]</div>
-            <div class="flow-title">[Flow name]</div>
-            <div class="flow-desc">[What this flow does and why it matters]</div>
-          </div>
-          <div class="flow-card">
-            <div class="placeholder-block">[Flow 2]</div>
-            <div class="flow-title">[Flow name]</div>
-            <div class="flow-desc">[What this flow does and why it matters]</div>
+      <section id="opportunity" class="p-section">
+        <div class="p-eyebrow">Opportunity</div>
+        <h2>The immediate opportunity was to transform Order History from a passive purchase history into an active post-sales service.</h2>
+        <p>Customers should be able to quickly answer three questions:</p>
+        <ul class="p-list">
+          <li>What is happening?</li>
+          <li>What does it affect?</li>
+          <li>What can I do about it?</li>
+        </ul>
+        <p>But the research also revealed a broader opportunity.</p>
+        <p>Even if all the right information and actions were visible, customers still had to translate their real-world problem into the way adidas had organised its services.</p>
+        <p>A customer does not think: I need to use shipment tracking. They think: My shoes were supposed to arrive yesterday. Or: These are too small. Or: Where is my refund?</p>
+        <p>That led to a broader design question: what if customers could start by explaining their problem instead of having to find the right feature first?</p>
+      </section>
+
+      <section id="vision" class="p-section">
+        <div class="p-eyebrow">Product vision</div>
+        <h2>I designed Order History around two connected ideas.</h2>
+        <p>The first was a modular product system that could adapt to different order states and surface the most relevant information and actions at the right moment.</p>
+        <p>The second was an intent-based layer that could understand what the customer was trying to resolve and connect them with the right part of the system.</p>
+        <p>This is where AI made sense, because natural language could become a new way to access the existing post-sales ecosystem.</p>
+        <p>The customer could describe what was happening. The system could identify the relevant order, retrieve the necessary information, and surface the appropriate action.</p>
+        <p>The existing tracking, returns, refunds, and order-management systems would continue to be the source of truth. AI would connect customer intent with those services.</p>
+      </section>
+
+      <section id="foundation" class="p-section">
+        <div class="p-eyebrow">Building the foundation</div>
+        <h2>Three zones, one card</h2>
+        <p>The existing Order History experience treated orders mainly as a historical record. I reorganised the experience around what customers might need after making a purchase.</p>
+        <p>Each order brought together:</p>
+        <ul class="p-list">
+          <li>current status</li>
+          <li>delivery information</li>
+          <li>products and quantities</li>
+          <li>relevant post-sales actions</li>
+        </ul>
+        <p>The challenge was supporting many different states without designing a separate experience for every scenario.</p>
+        <p>This led to a modular card system. Each card was organised around three questions.</p>
+        <p><strong>What is happening?</strong> Status, dates, and delivery estimates should be understandable at a glance.</p>
+        <p><strong>What does it affect?</strong> Products, sizes, and quantities should remain visible and consistent throughout the experience.</p>
+        <p><strong>What can I do about it?</strong> Actions should respond to the current order state rather than remain generic.</p>
+        <p>This structure became the foundation for deliveries, returns, refunds, and other post-sales scenarios.</p>
+      </section>
+
+      <section id="intent" class="p-section">
+        <div class="p-eyebrow">Designing around intent</div>
+        <h2>How can we help with your order?</h2>
+        <p>As part of the same vision, once the system was structured around customer needs, I explored how customers could access it without having to manually navigate the entire experience.</p>
+        <p>The interaction could begin with a simple question: How can we help with your order?</p>
+        <p>From the customer’s response, the system would follow four steps.</p>
+        <ul class="p-list">
+          <li><strong>Understand:</strong> Interpret what the customer is trying to resolve.</li>
+          <li><strong>Identify:</strong> Determine which order, delivery, or product is related to the request.</li>
+          <li><strong>Check:</strong> Retrieve the necessary order information, policies, and available services.</li>
+          <li><strong>Present:</strong> Show the most relevant information or next action using the existing product interface.</li>
+        </ul>
+        <p>The key was for AI to sit between customer intent and the existing capabilities.</p>
+        <p>It would interpret the request, but not make business decisions. Return eligibility, refund amounts, cancellations, and delivery promises would come from the systems of record. Higher-impact actions would require customer confirmation, and unresolved cases would be escalated to Customer Service with the relevant context attached.</p>
+      </section>
+
+      <section id="mvp" class="p-section">
+        <div class="p-eyebrow">Defining the MVP</div>
+        <h2>The MVP decision did not change the product vision; it changed the order in which we decided to build it.</h2>
+        <p>The full experience depended on several capabilities working together: intent recognition, live order context, business rules, service integrations, and safeguards around transactional actions.</p>
+        <p>Trying to implement all of this in the first release would have significantly increased the complexity and risk of the project.</p>
+        <p>So we deliberately reduced the scope.</p>
+        <p>The MVP focused on the foundation: a modular Order History experience, initially applied to Returns &amp; Refunds.</p>
+        <p>Returns &amp; Refunds provided a strong test for the system because it contained some of the most complex post-sales states and actions. If the architecture worked there, it could later scale to other scenarios.</p>
+        <p>The MVP established:</p>
+        <ul class="p-list">
+          <li>reusable order components</li>
+          <li>a clearer information hierarchy</li>
+          <li>contextual actions</li>
+          <li>consistent product information</li>
+          <li>a scalable structure for adding new post-sales services</li>
+        </ul>
+        <p>This allowed us to improve the existing experience immediately while building a foundation that could support a broader evolution of the product.</p>
+      </section>
+
+      <section id="results" class="p-section">
+        <div class="p-eyebrow">Results</div>
+        <h2>The MVP produced measurable impact.</h2>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-num">8–10%</div>
+            <div class="stat-label">Reduction in post-sales Customer Service contacts after launch</div>
           </div>
         </div>
+        <p>This result validated an important part of the hypothesis: bringing relevant information and actions together in a clearer, more contextual experience could reduce the effort customers needed to make after a purchase.</p>
+        <p>The result does not validate the AI layer, because that part of the experience was not included in the released MVP.</p>
       </section>
 
-      <section id="reflection" class="p-section">
-        <div class="p-eyebrow">Reflection</div>
-        <h2>What I learned</h2>
-        <div class="reflection-list">
-          <div class="reflection-item"><div class="r-title">[Lesson 1, short]</div><div class="r-desc">[One or two sentences on it]</div></div>
-          <div class="reflection-item"><div class="r-title">[Lesson 2, short]</div><div class="r-desc">[One or two sentences on it]</div></div>
-        </div>
+      <section id="measure" class="p-section">
+        <div class="p-eyebrow">How I would measure the full experience</div>
+        <h2>Because getting an answer is not the same as solving the problem.</h2>
+        <p>The reduction in Customer Service contacts was an important metric for the first release.</p>
+        <p>For the broader experience, I would focus more directly on whether customers were actually able to resolve what they came to do.</p>
+        <p>The primary metric would be resolution rate: how many customer needs are successfully resolved without requiring another channel?</p>
+        <p>I would also measure:</p>
+        <ul class="p-list">
+          <li>time to resolution</li>
+          <li>escalation rate</li>
+          <li>failed actions</li>
+          <li>satisfaction after completing the task</li>
+        </ul>
+      </section>
+
+      <section id="changed" class="p-section">
+        <div class="p-eyebrow">What changed</div>
+        <h2>The MVP transformed Order History from a passive record into a more useful post-purchase tool.</h2>
+        <p>But the design vision took the idea one step further.</p>
+        <p>What if customers did not even need to understand how Order History was organised?</p>
+        <p>Instead of finding the right service, they could explain what they needed. The system could connect that intent with real order data, business rules, and existing product actions.</p>
+        <p>The AI-assisted experience was part of that product vision. The MVP deliberately stopped one layer earlier, establishing the architecture needed to make that vision possible.</p>
       </section>
     </div>
   </div>
