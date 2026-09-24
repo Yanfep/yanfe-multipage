@@ -65,6 +65,7 @@
       <a href="#service-design" class="section-link">Service design</a>
       <a href="#agent-behaviour" class="section-link">Agent behaviour</a>
       <a href="#prototyping" class="section-link">AI Prototyping &amp; trust</a>
+      <a href="#validating" class="section-link">Validating with real users</a>
       <a href="#solution" class="section-link">Solution</a>
       <a href="#impact" class="section-link">Impact</a>
       <a href="#learning" class="section-link">Learning</a>
@@ -97,6 +98,7 @@
         <div class="p-eyebrow">Problem</div>
         <h2>23,500 cases exposed a support model that wasn’t scaling.</h2>
         <p>In four months, adidas Running received roughly 23,500 support cases, representing around €118,000 in support costs. Many issues were technical and contextual, and customers often waited 2 to 5 days for a resolution by email.</p>
+        <p>Support for the Running app had merged into adidas’ global Customer Service. Users were redirected to shared self-help pages that struggled with usability and findability, and the agents now handling Running-specific cases were still ramping up on the product, so even human-assisted resolutions were slower than before.</p>
         <p>The challenge was not simply handling more tickets. It was helping customers solve more problems without entering the support queue in the first place.</p>
         <p>It was to explore whether conversational AI could help customers resolve a meaningful share of these issues directly.</p>
         <figure class="prototype-embed">
@@ -214,6 +216,21 @@
         <figure class="p-figure">
           <img src="images/adirun-knowledge-stores.png" alt="Knowledge Stores used by adiRun: Adidas, Runtastic, and a test Runtastic store">
         </figure>
+      </section>
+
+      <section id="validating" class="p-section">
+        <div class="p-eyebrow">Validating with real users</div>
+        <h2>A June 2025 study showed how much of the experience still needed to change.</h2>
+        <p>Before the pilot, adiRun was tested with 7 runners in the UK, US and Spain, split between people who already used tools like ChatGPT regularly and people who didn’t. All were active runners who didn’t currently track their runs.</p>
+        <p>The sessions confirmed something specific: users judged adiRun against ChatGPT, not against a typical support chatbot. A reply that felt rigid or scripted was dismissed quickly, even when the information behind it was correct.</p>
+        <p>Two issues stood out as high severity.</p>
+        <p><strong>No loading indicator.</strong> Users couldn’t tell whether adiRun was thinking or had stalled, and some refreshed the page out of uncertainty, losing their conversation in the process.</p>
+        <p class="p-quote">“I wouldn’t really have known where to wait there.” — Male, UK, 22s</p>
+        <p><strong>No conversation persistence.</strong> A refresh, intentional or not, wiped the context. Users who’d already invested time explaining their issue had to start over.</p>
+        <p class="p-quote">“I don’t have the details of what I might be doing anymore. It could be quite a large problem there.” — Male, UK, 22s</p>
+        <p>Two more came back as medium severity: answers were often correct but hard to scan, arriving as a wall of text instead of a clear structure, and sometimes too vague for users who wanted a specific, task-oriented response. One issue was lower severity but still worth fixing: adiRun would occasionally answer questions entirely outside its scope, like defining a math term, instead of saying so and redirecting.</p>
+        <p>These findings mapped to five principles for a useful assistant: communicate its limits, stay consistent, stay visually present, show it’s working, and structure its answers clearly. Measured against them in June 2025, adiRun met almost none consistently.</p>
+        <p>Those findings shaped several UI refinements ahead of the pilot: visible loading states, persistent conversations, and clearer response formatting.</p>
       </section>
 
       <section id="solution" class="p-section">
