@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repeat Order: turning a hidden shortcut into a growth lever — Yanfe</title>
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FAFBFD">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+<button class="chat-fab" aria-label="Ask YanfeLLM" data-chat-toggle>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"/></svg>
+</button>
+
+<!-- YANFELLM CHAT PANEL -->
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="chat-header-left">
+      <span class="chat-title">YANFELLM</span>
+      <span class="chat-info">i</span>
+      <div class="chat-tooltip">YanfeLLM is an AI chatbot. May contain mistakes. Responses aren't stored anywhere.</div>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Close">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <p class="chat-prompt-title">What would you like to know?</p>
+    <button class="chat-suggestion" data-q="What's your favorite project and why?">↳ What's your favorite project and why?</button>
+    <button class="chat-suggestion" data-q="How do you approach product design?">↳ How do you approach product design?</button>
+    <button class="chat-suggestion" data-q="What's your background before adidas?">↳ What's your background before adidas?</button>
+  </div>
+  <div class="chat-footer">
+    <input class="chat-input" id="chatInput" type="text" placeholder="Ask about Yanfe...">
+    <button class="chat-send" id="chatSend" aria-label="Send">↑</button>
+  </div>
+</div>
+
+<div class="page" id="page-project">
+
+  <div class="nav">
+    <div class="nav-brand">
+      <a href="index.html" class="nav-name">YANFE</a>
+      <span class="nav-role">PRODUCT DESIGNER</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#work">WORK</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+    <button class="chat-toggle" aria-label="Ask YanfeLLM" data-chat-toggle><svg class="chat-toggle-icon" width="16" height="16" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5231 29.2759C12.6685 22.5706 7.42938 17.3315 0.724097 15.4769C0.240255 15.3431 0.240255 14.657 0.724097 14.5231C7.42938 12.6685 12.6685 7.42939 14.5231 0.724099C14.6569 0.240257 15.343 0.240257 15.4769 0.724099C17.3315 7.42939 22.5706 12.6685 29.2759 14.5231C29.7597 14.657 29.7597 15.343 29.2759 15.4769C22.5706 17.3315 17.3315 22.5706 15.4769 29.2759C15.343 29.7597 14.657 29.7597 14.5231 29.2759Z" fill="currentColor"/></svg><span class="chat-toggle-label">YANFELLM</span></button>
+  </div>
+
+  <div class="project-body">
+    <div class="sidebar">
+      <a href="index.html#work" class="back">← Back</a>
+      <a href="#context" class="section-link active">Context</a>
+      <a href="#what" class="section-link">What is Repeat Order?</a>
+      <a href="#opportunity" class="section-link">The opportunity</a>
+      <a href="#research" class="section-link">Why weren’t people using it?</a>
+      <a href="#hypothesis" class="section-link">Hypothesis and goal</a>
+      <a href="#journey" class="section-link">Exploring the journey</a>
+      <a href="#testing" class="section-link">Testing</a>
+      <a href="#mvp-home" class="section-link">MVP — Home</a>
+      <a href="#mvp-history" class="section-link">MVP — Order History</a>
+      <a href="#mvp-detail" class="section-link">MVP — Order Detail</a>
+      <a href="#shipped" class="section-link">What shipped</a>
+      <a href="#results" class="section-link">Results</a>
+      <a href="#learning" class="section-link">What I learned</a>
+    </div>
+
+    <div class="project-content">
+      <header class="project-intro">
+        <div class="project-eyebrow">Mercadona Online · Product Designer · 2 sprints · 2021</div>
+        <h1 class="project-title">Repeat Order: turning a hidden shortcut into a growth lever</h1>
+        <div class="hero-image hero-repeat"></div>
+        <div class="meta-row">
+          <div><div class="label">Role</div><div class="value">Product Designer</div></div>
+          <div><div class="label">Timeline</div><div class="value">2 sprints · 2021</div></div>
+          <div><div class="label">Team</div><div class="value">1 Product Designer<br>1 PM<br>4 Software Developers</div></div>
+          <div><div class="label">Skills</div><div class="value">Research<br>Prototyping<br>Growth</div></div>
+        </div>
+      </header>
+
+      <section id="context" class="p-section">
+        <div class="p-eyebrow">Context</div>
+        <h2>After launching the new Mercadona Online website and apps, the team started focusing more on improving business performance.</h2>
+        <p>One of the areas we looked at was the cart experience, and Repeat Order stood out as an interesting opportunity.</p>
+        <p>I led the design work from research to validation, working closely with Product and Engineering throughout the two sprints.</p>
+      </section>
+
+      <section id="what" class="p-section">
+        <div class="p-eyebrow">What is Repeat Order?</div>
+        <h2>Repeat Order was clearly the fastest option, especially for customers doing a similar shop every week. But it wasn’t being used as much as we expected.</h2>
+        <p>Regular customers could fill their cart in three main ways:</p>
+        <ul class="p-list">
+          <li><strong>My regular products</strong> — adding products one by one</li>
+          <li><strong>Browse the catalogue</strong> — also adding products individually</li>
+          <li><strong>Repeat Order</strong> — copying a previous order into the cart</li>
+        </ul>
+      </section>
+
+      <section id="opportunity" class="p-section">
+        <div class="p-eyebrow">The opportunity</div>
+        <h2>Could we get more existing customers to use Repeat Order?</h2>
+        <p>We saw that orders made through Repeat Order had an average ticket around €2 higher than orders built manually.</p>
+        <p>That made Repeat Order an interesting growth opportunity. If we could get more existing customers to use it, there was a potential benefit for both sides: less effort for customers and a higher average ticket for the business.</p>
+      </section>
+
+      <section id="research" class="p-section">
+        <div class="p-eyebrow">Why weren’t people using it?</div>
+        <h2>The main issue was a lot of people either couldn’t find it or didn’t feel confident using it.</h2>
+        <p>I ran research sessions with 20 regular customers in a Mercadona store.</p>
+        <p>I first interviewed them about how they usually shopped online, then gave them a task using the existing experience to see whether they could find and use Repeat Order.</p>
+        <p>A few patterns came up quickly:</p>
+        <ul class="p-list">
+          <li>40% couldn’t find Repeat Order</li>
+          <li>20% didn’t know it existed</li>
+          <li>60% weren’t sure what would happen after tapping it</li>
+          <li>60% thought it would send them straight to checkout, without giving them a chance to edit the cart</li>
+        </ul>
+      </section>
+
+      <section id="hypothesis" class="p-section">
+        <div class="p-eyebrow">Hypothesis and goal</div>
+        <h2>If Repeat Order was easier to find and clearer to understand, more customers would use it.</h2>
+        <p>The PM set the business goal: +€0.15 on the average ticket across all orders.</p>
+        <p>My job was to understand what was stopping customers from using Repeat Order and design the smallest changes that could improve adoption.</p>
+      </section>
+
+      <section id="journey" class="p-section">
+        <div class="p-eyebrow">Exploring the journey</div>
+        <h2>The aim wasn’t to redesign the whole flow. It was to make Repeat Order easier to notice and easier to understand.</h2>
+        <p>I ran a workshop with Product and Engineering to identify where Repeat Order could be easier to discover.</p>
+        <p>We focused on three key touchpoints:</p>
+        <ul class="p-list">
+          <li><strong>Home</strong> — make Repeat Order visible before customers start rebuilding their cart</li>
+          <li><strong>Order History</strong> — make previous orders easier to reuse</li>
+          <li><strong>Order Detail</strong> — move the action to a more visible position and make the outcome clearer</li>
+        </ul>
+        <p>The same experience was adapted for iOS and Android using native components and interaction patterns.</p>
+      </section>
+
+      <section id="testing" class="p-section">
+        <div class="p-eyebrow">Testing</div>
+        <h2>I created mobile prototypes and tested the new Repeat Order experience with another 10 customers in a Mercadona store.</h2>
+        <p>For each touchpoint, we had a specific question.</p>
+        <p><strong>Home.</strong> Would people notice Repeat Order before starting to build their cart manually? All 10 participants used the Repeat Order button on Home as their entry point into the flow.</p>
+        <p><strong>Order History.</strong> Would people understand that they could repeat any previous order? 7 of 10 participants opened the order card first instead of using the Repeat Order action directly. This showed us that the card was still the more natural entry point for most customers.</p>
+        <p><strong>Order Detail.</strong> Would moving the action higher make it easier to find? Moving Repeat Order to the top made the action easier to find, without requiring customers to scroll through the order first.</p>
+        <p>Across the flow, we also checked whether customers understood that Repeat Order created an editable cart rather than taking them directly to payment.</p>
+      </section>
+
+      <section id="mvp-home" class="p-section">
+        <div class="p-eyebrow">MVP — Home</div>
+        <h2>Make Repeat Order visible earlier</h2>
+        <p>We added a Repeat order button to the latest-order card on Home. It was always visible, while the second action changed depending on the order status: Rate until the order was rated, then View order.</p>
+        <p>This gave customers access to Repeat Order before they started browsing or adding products manually.</p>
+        <p>We also added a short “What’s new” message to explain the feature and make one thing very clear: you can still edit your cart after repeating an order.</p>
+        <p>That directly addressed one of the biggest concerns we had seen in research.</p>
+      </section>
+
+      <section id="mvp-history" class="p-section">
+        <div class="p-eyebrow">MVP — Order History</div>
+        <h2>Give customers another way to access Repeat Order</h2>
+        <p>We added a Repeat order action to completed orders inside Order History. The idea was to make previous purchases easier to reuse directly from the list.</p>
+        <p>During testing, however, 7 of 10 participants opened the order first instead of using the Repeat Order action straight away.</p>
+        <p>That showed us that, for many customers, Order History was still more of a way to inspect a previous order than to immediately repeat it. This made the Order Detail experience even more important.</p>
+        <p>The Order History change shipped on web, but not on the apps.</p>
+      </section>
+
+      <section id="mvp-detail" class="p-section">
+        <div class="p-eyebrow">MVP — Order Detail</div>
+        <h2>Move the action to where people actually look</h2>
+        <p>The Repeat Order button was originally at the bottom of the Order Detail page, below the receipt.</p>
+        <p>We moved it to the top of the page, inside the order status card, and made it the main action.</p>
+        <p>It was a small change, but it meant customers no longer had to scroll through the full order before finding it.</p>
+      </section>
+
+      <section id="shipped" class="p-section">
+        <div class="p-eyebrow">What shipped</div>
+        <h2>We didn’t manage to ship every change across every platform.</h2>
+        <div class="cap-list">
+          <div>
+            <div class="cap-title">Web</div>
+            <div class="cap-desc">Home · Order History · Order Detail</div>
+          </div>
+          <div>
+            <div class="cap-title">Apps</div>
+            <div class="cap-desc">Home · Order Detail</div>
+          </div>
+        </div>
+        <p>The main gap was Order History on apps, which didn’t make it into this release.</p>
+        <p>We had underestimated the implementation effort, and priorities changed during the project.</p>
+        <p>Looking back, I would have scoped the first release more tightly and aligned earlier on what we could realistically ship across platforms.</p>
+      </section>
+
+      <section id="results" class="p-section">
+        <div class="p-eyebrow">Results</div>
+        <h2>After launch, we saw more customers using Repeat Order, and the business target was reached.</h2>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-num">+€0.15</div>
+            <div class="stat-label">On the average ticket</div>
+          </div>
+        </div>
+        <p>We also saw strong improvements across the Repeat Order journey:</p>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-num">70.7%</div>
+            <div class="stat-label">Purchase conversion, from 34.6%</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">9.03%</div>
+            <div class="stat-label">Payment drop-off, from 13.8%</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">16 min</div>
+            <div class="stat-label">Time to purchase, from 34 min</div>
+          </div>
+        </div>
+        <p>The changes made Repeat Order easier to discover and helped customers complete their purchase faster and with less drop-off.</p>
+      </section>
+
+      <section id="learning" class="p-section">
+        <div class="p-eyebrow">What I learned</div>
+        <h2>The feature itself didn’t need a major redesign.</h2>
+        <p>The main problem was that customers weren’t seeing it, or they weren’t sure what would happen if they used it.</p>
+        <p>A few relatively small changes in visibility, hierarchy and copy made the experience much easier to use.</p>
+        <p>The other learning was around scope. We tried to cover several touchpoints across web, iOS and Android in two sprints, and not everything made it into the release.</p>
+        <p>If I did this project again, I would:</p>
+        <ul class="p-list">
+          <li>scope the first release more tightly</li>
+          <li>agree earlier on what could realistically ship across platforms</li>
+          <li>measure each touchpoint separately to understand which one was contributing most to the result</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-note">Designed + built by Yanfe</div>
+    <div class="footer-links"><a href="https://www.linkedin.com/in/yanfepedroza" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="mailto:yanfepedroza@gmail.com">Email</a><a href="https://github.com/Yanfep" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

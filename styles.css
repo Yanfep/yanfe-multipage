@@ -10,6 +10,7 @@ html { color-scheme: light; background: #FAFBFD; }
   --tile1b: #E8598A;
   --tile2: #EDEEF2;
   --tile3: #E7E4F5;
+  --tile-repeat: #F3E1D4;
   --tile4a: #5B6CE8;
   --tile4b: #8A5BE8;
   --tile5: #DCEFE6;
@@ -91,13 +92,14 @@ h1 em { font-style: italic; }
 
 .projects { padding: 0 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .tile { display: flex; align-items: flex-end; padding: 32px; height: auto; aspect-ratio: 16 / 10; min-height: 320px; cursor: pointer; }
-.tile-title { font-size: 26px; font-weight: 700; }
+.tile-title { font-size: 22px; font-weight: 700; }
 .tile-meta { font-size: 13px; margin-top: 4px; }
 .tile-dark .tile-title { color: #fff; } .tile-dark .tile-meta { color: rgba(255,255,255,0.8); }
 .tile-light .tile-title { color: var(--fg); } .tile-light .tile-meta { color: var(--muted); }
 .tile1 { background: linear-gradient(135deg, var(--tile1a), var(--tile1b)); }
 .tile2 { background: var(--tile2); }
 .tile3 { background: var(--tile3); }
+.tile-repeat { background: var(--tile-repeat); }
 .tile4 { background: #dadacc; }
 .tile-ds { position: relative; overflow: hidden; }
 .tile-ds .cover-marks {
@@ -240,6 +242,10 @@ h1 em { font-style: italic; }
 }
 .hero-image.hero-orders {
   background: #E7E4F5;
+  color: transparent;
+}
+.hero-image.hero-repeat {
+  background: #F3E1D4;
   color: transparent;
 }
 .hero-image.hero-ds {
@@ -498,7 +504,7 @@ h1 em { font-style: italic; }
   .projects { grid-template-columns: 1fr 1fr; gap: 16px; }
   .experiments-grid { grid-template-columns: 1fr 1fr; }
   .tile { min-height: 240px; padding: 24px; }
-  .tile-title { font-size: 22px; }
+  .tile-title { font-size: 20px; }
 
   .project-body { grid-template-columns: 1fr; row-gap: 0; padding-top: 24px; }
   .sidebar { display: none; }
@@ -519,7 +525,7 @@ h1 em { font-style: italic; }
   .experience .role { grid-column: 2; font-size: 12px; margin-top: -4px; margin-bottom: 8px; }
   .projects { grid-template-columns: 1fr; gap: 14px; }
   .tile { min-height: 220px; padding: 20px; }
-  .tile-title { font-size: 22px; }
+  .tile-title { font-size: 20px; }
   .about { padding-top: 56px; padding-bottom: 40px; }
   .about-grid { padding: 56px 20px 64px 20px; grid-template-columns: 1fr; gap: 40px; }
   .about-heading { font-size: 24px; }
