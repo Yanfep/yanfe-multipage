@@ -94,6 +94,7 @@ h1 em { font-style: italic; }
 
 .projects { padding: 0 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px 24px; }
 .project-card { display: flex; flex-direction: column; gap: 14px; color: inherit; text-decoration: none; }
+.project-card[hidden] { display: none !important; }
 .tile {
   display: block;
   padding: 0;
