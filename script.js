@@ -20,7 +20,7 @@ var YANFE_CONTEXT = [
   "- Previously at Mercadona Tech, Parclick, Syneidis, and Incursiones (UX Designer, from 2014).",
   "- Holds a BFA in architecture, which shapes how she thinks about information architecture in product work.",
   "- Selected projects: Rethinking adidas post-purchase support, Repeat Order: turning a hidden shortcut into a growth lever (Mercadona Online, 2021), Order Detail Page as a system (adidas design system), \"Where is my refund?\" conversational timeline (adidas customer service), a post-sales design system refactor, adiRun: Designing an AI agent for the adidas Running App, and a React/TypeScript design system built from scratch in Storybook.",
-  "- Also builds small AI experiments to learn: a WCAG contrast checker (MCP app in Cursor), a token-based React button component, and browser-based interactive exercises."
+  "- Also builds small experiments to learn, like a browser-based design token sorting game."
 ].join("\n");
 
 // After you deploy the Cloudflare Worker, paste its URL here, e.g.

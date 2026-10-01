@@ -10,7 +10,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -50,6 +50,7 @@
     </div>
     <div class="nav-links">
       <a href="index.html#work">WORK</a>
+      <a href="experiments.html" class="active">EXPERIMENTS</a>
       <a href="about.html">ABOUT</a>
     </div>
     <button class="chat-toggle" aria-label="Ask YanfeLLM" data-chat-toggle><svg class="chat-toggle-icon" width="16" height="16" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5231 29.2759C12.6685 22.5706 7.42938 17.3315 0.724097 15.4769C0.240255 15.3431 0.240255 14.657 0.724097 14.5231C7.42938 12.6685 12.6685 7.42939 14.5231 0.724099C14.6569 0.240257 15.343 0.240257 15.4769 0.724099C17.3315 7.42939 22.5706 12.6685 29.2759 14.5231C29.7597 14.657 29.7597 15.343 29.2759 15.4769C22.5706 17.3315 17.3315 22.5706 15.4769 29.2759C15.343 29.7597 14.657 29.7597 14.5231 29.2759Z" fill="currentColor"/></svg><span class="chat-toggle-label">YANFELLM</span></button>
@@ -61,18 +62,10 @@
   </div>
 
   <div class="experiments-grid">
-    <div class="experiment-card">
-      <div class="title">WCAG contrast checker</div>
-      <div class="meta">MCP app in Cursor</div>
-    </div>
-    <div class="experiment-card">
-      <div class="title">Token-based button</div>
-      <div class="meta">React component</div>
-    </div>
-    <div class="experiment-card">
-      <div class="title">Interactive exercises</div>
-      <div class="meta">Browser-based</div>
-    </div>
+    <a class="experiment-card" href="prototypes/token-game.html" target="_blank" rel="noopener noreferrer">
+      <div class="title">Token sorting game</div>
+      <div class="meta">Browser-based · drag &amp; drop</div>
+    </a>
   </div>
 
   <div class="footer">

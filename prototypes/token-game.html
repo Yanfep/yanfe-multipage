@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Token Game — Yanfe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0b;
+    --bg-raised:#141414;
+    --fg:#f4f2ee;
+    --muted:#8f8c86;
+    --accent:#e8520a;
+    --good:#5fd18c;
+    --bad:#ff6b57;
+    --line:rgba(244,242,238,0.1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--fg);
+    font-family:'Inter Tight', system-ui, sans-serif;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  a{ color:inherit; text-decoration:none; }
+
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:10;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:26px clamp(20px, 4vw, 56px);
+    mix-blend-mode:difference;
+  }
+  nav .name{ font-family:'Fraunces', serif; font-size:17px; }
+  nav .links{ display:flex; gap:28px; font-size:14px; }
+  nav .links a{ opacity:.85; }
+  nav .links a:hover{ opacity:1; }
+
+  #hero{
+    position:relative;
+    height:100vh;
+    width:100%;
+    overflow:hidden;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:40px 40px;
+    background-position:center;
+  }
+
+  .hud{
+    position:absolute; top:100px; right:clamp(20px, 4vw, 56px); z-index:2;
+    text-align:right; font-variant-numeric:tabular-nums; pointer-events:none;
+  }
+  .hud .score{ font-family:'Fraunces', serif; font-size:clamp(30px,5vw,46px); line-height:1; }
+  .hud .label{ color:var(--muted); font-size:13px; margin-top:6px; }
+  .reset-btn{
+    margin-top:14px;
+    pointer-events:all;
+    background:transparent;
+    color:var(--muted);
+    border:1px solid var(--line);
+    padding:7px 16px;
+    border-radius:999px;
+    font-family:'Inter Tight', sans-serif;
+    font-size:12px;
+    cursor:pointer;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .reset-btn:hover{ color:var(--fg); border-color:var(--muted); }
+  .reset-btn.hidden{ display:none; }
+
+  .intro{
+    position:absolute; left:clamp(20px, 4vw, 56px); top:100px; z-index:2;
+    max-width:380px; pointer-events:none;
+  }
+  .intro h1{ font-size:clamp(28px, 4vw, 44px); line-height:1.05; }
+  .intro p{ color:var(--muted); margin-top:12px; font-size:15px; max-width:320px; }
+
+  #chip{
+    position:absolute;
+    z-index:5;
+    display:flex; align-items:center; gap:8px;
+    padding:10px 16px;
+    border-radius:999px;
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    font-size:14px;
+    font-variant-numeric:tabular-nums;
+    cursor:grab;
+    user-select:none;
+    touch-action:none;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    transition:box-shadow .15s ease;
+  }
+  #chip.dragging{ cursor:grabbing; box-shadow:0 16px 40px rgba(0,0,0,0.55); }
+  #chip .swatch{ width:14px; height:14px; border-radius:4px; flex:none; }
+  #chip.hidden{ display:none; }
+
+  #buckets{
+    position:absolute;
+    left:0; right:0; bottom:0; z-index:2;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border-top:1px solid var(--line);
+  }
+  .bucket{
+    background:rgba(11,11,11,0.7);
+    backdrop-filter:blur(4px);
+    padding:22px 12px 18px;
+    text-align:center;
+    transition:background .15s ease, border-color .15s ease;
+    border-top:2px solid transparent;
+  }
+  .bucket .name{ font-size:14px; font-weight:500; }
+  .bucket .desc{ color:var(--muted); font-size:12px; margin-top:4px; display:none; }
+  @media (min-width:720px){ .bucket .desc{ display:block; } }
+  .bucket.over{ background:rgba(232,82,10,0.12); border-top-color:var(--accent); }
+  .bucket.correct{ border-top-color:var(--good); background:rgba(95,209,140,0.1); }
+  .bucket.wrong{ border-top-color:var(--bad); background:rgba(255,107,87,0.1); }
+
+  #feedback{
+    position:absolute;
+    z-index:5;
+    display:flex; align-items:center; gap:8px;
+    padding:10px 16px;
+    border-radius:10px;
+    font-size:15px;
+    font-weight:500;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity .15s ease;
+    background:var(--bg-raised);
+    max-width:min(70vw, 280px);
+    white-space:nowrap;
+  }
+  #feedback.show{ opacity:1; }
+  #feedback.good{ color:#8fe6b3; border:1px solid rgba(95,209,140,0.5); box-shadow:0 8px 24px rgba(0,0,0,0.5); }
+  #feedback.bad{ color:#ffa596; border:1px solid rgba(255,107,87,0.5); box-shadow:0 8px 24px rgba(0,0,0,0.5); }
+  #feedback .icon{ font-size:16px; line-height:1; flex:none; }
+
+  @media (prefers-reduced-motion: reduce){
+    #feedback{ transition:opacity .01s linear; }
+    #scrollCue .arrow{ animation:none; }
+    #chip{ transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+
+  #hint{
+    position:absolute; left:50%; transform:translateX(-50%); bottom:130px;
+    color:var(--muted); font-size:13px; z-index:2; transition:opacity .5s ease;
+  }
+  #scrollCue{
+    position:absolute; left:50%; transform:translateX(-50%); bottom:130px;
+    color:var(--muted); font-size:13px; z-index:2;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    opacity:0; pointer-events:none; transition:opacity .4s ease;
+  }
+  #scrollCue .arrow{ font-size:16px; animation:nudge 1.6s ease-in-out infinite; }
+  @keyframes nudge{ 0%,100%{ transform:translateX(0);} 50%{ transform:translateX(4px);} }
+
+  #overlay{
+    position:absolute; inset:0; z-index:6;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
+    background:rgba(11,11,11,0.82);
+    backdrop-filter:blur(6px);
+  }
+  #overlay.hidden{ display:none; }
+  #overlay h2{ font-size:clamp(26px,4vw,38px); text-align:center; }
+  #overlay p{ color:var(--muted); font-size:15px; max-width:380px; text-align:center; }
+  #overlay button{
+    margin-top:8px; background:var(--accent); color:#fff; border:none;
+    padding:12px 30px; border-radius:999px; font-family:'Inter Tight', sans-serif;
+    font-size:15px; font-weight:500; cursor:pointer;
+  }
+  #overlay button:hover{ opacity:.9; }
+  #overlay .skip{ color:var(--muted); font-size:13px; text-decoration:underline; cursor:pointer; }
+
+  footer{
+    padding:40px clamp(20px, 4vw, 56px) 60px;
+    display:flex; justify-content:space-between; color:var(--muted); font-size:13px;
+    border-top:1px solid var(--line);
+  }
+  footer a:hover{ color:var(--fg); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="name" href="../index.html">Yanfe</a>
+  <div class="links">
+    <a href="../experiments.html">Experiments</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="intro">
+    <h1>Senior Product Designer</h1>
+    <p>This site is constantly under construction — especially in the age of AI.</p>
+  </div>
+
+  <div class="hud">
+    <div class="score" id="score">0</div>
+    <div class="label" id="timer">30s · sort tokens</div>
+    <button id="resetBtn" class="reset-btn hidden">Reset</button>
+  </div>
+
+  <div id="chip" class="hidden">
+    <span class="swatch"></span>
+    <span class="label"></span>
+  </div>
+
+  <div id="feedback" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <div id="hint">drag the token to its category</div>
+  <a href="../experiments.html" id="scrollCue"><span>back to experiments</span><span class="arrow">→</span></a>
+
+  <div id="buckets">
+    <div class="bucket" data-category="primitivo">
+      <div class="name">Primitive</div>
+      <div class="desc">raw values: gray.500, 4px</div>
+    </div>
+    <div class="bucket" data-category="semantico">
+      <div class="name">Semantic</div>
+      <div class="desc">with intent: text.muted</div>
+    </div>
+    <div class="bucket" data-category="componente">
+      <div class="name">Component</div>
+      <div class="desc">applied: button.bg</div>
+    </div>
+  </div>
+
+  <div id="overlay">
+    <h2 id="overlayTitle">Sort the tokens</h2>
+    <p>Every design token belongs to a layer: primitive, semantic, or component. Drag it to the right category before time runs out.</p>
+    <button id="startBtn">Play</button>
+    <a class="skip" href="../experiments.html">skip to experiments →</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Yanfe</span>
+  <span><a href="mailto:yanfepedroza@gmail.com">yanfepedroza@gmail.com</a></span>
+</footer>
+
+<script>
+const hero = document.getElementById('hero');
+const chip = document.getElementById('chip');
+const chipLabel = chip.querySelector('.label');
+const chipSwatch = chip.querySelector('.swatch');
+const buckets = Array.from(document.querySelectorAll('.bucket'));
+const scoreEl = document.getElementById('score');
+const timerEl = document.getElementById('timer');
+const overlay = document.getElementById('overlay');
+const overlayTitle = document.getElementById('overlayTitle');
+const startBtn = document.getElementById('startBtn');
+const hint = document.getElementById('hint');
+const scrollCue = document.getElementById('scrollCue');
+const feedback = document.getElementById('feedback');
+const resetBtn = document.getElementById('resetBtn');
+
+const CATEGORY_NAMES = {
+  primitivo: 'Primitive',
+  semantico: 'Semantic',
+  componente: 'Component'
+};
+
+let feedbackTimeout = null;
+function showFeedback(text, good, targetBucket){
+  clearTimeout(feedbackTimeout);
+  feedback.innerHTML = '';
+
+  const icon = document.createElement('span');
+  icon.className = 'icon';
+  icon.setAttribute('aria-hidden', 'true');
+  icon.textContent = good ? '✓' : '✗';
+
+  const label = document.createElement('span');
+  label.textContent = text;
+
+  feedback.appendChild(icon);
+  feedback.appendChild(label);
+  feedback.className = good ? 'good' : 'bad';
+
+  const heroRect = hero.getBoundingClientRect();
+  const bRect = targetBucket.getBoundingClientRect();
+  const centerX = bRect.left + bRect.width / 2 - heroRect.left;
+  const bucketTop = bRect.top - heroRect.top;
+
+  feedback.style.left = centerX + 'px';
+  feedback.style.transform = 'translateX(-50%)';
+  feedback.style.top = (bucketTop - feedback.offsetHeight - 14) + 'px';
+
+  requestAnimationFrame(() => feedback.classList.add('show'));
+  feedbackTimeout = setTimeout(() => feedback.classList.remove('show'), 1400);
+}
+
+const TOKENS = [
+  { label: 'gray.500', color: '#8f8c86', category: 'primitivo' },
+  { label: 'blue.300', color: '#7fb2ff', category: 'primitivo' },
+  { label: 'spacing.4', color: '#f4f2ee', category: 'primitivo' },
+  { label: 'radius.2', color: '#f4f2ee', category: 'primitivo' },
+  { label: 'font.size.14', color: '#f4f2ee', category: 'primitivo' },
+  { label: 'action.disabled', color: '#8f8c86', category: 'semantico' },
+  { label: 'surface.primary', color: '#e8520a', category: 'semantico' },
+  { label: 'text.muted', color: '#8f8c86', category: 'semantico' },
+  { label: 'border.subtle', color: '#f4f2ee', category: 'semantico' },
+  { label: 'feedback.error', color: '#ff6b57', category: 'semantico' },
+  { label: 'button.bg', color: '#e8520a', category: 'componente' },
+  { label: 'card.padding', color: '#f4f2ee', category: 'componente' },
+  { label: 'input.border', color: '#8f8c86', category: 'componente' },
+  { label: 'badge.radius', color: '#e8520a', category: 'componente' },
+  { label: 'modal.shadow', color: '#f4f2ee', category: 'componente' },
+];
+
+let running = false;
+let score = 0;
+let timeLeft = 30;
+let timerHandle = null;
+let current = null;
+let dragging = false;
+let offsetX = 0, offsetY = 0;
+let lastToken = null;
+
+function reset(){
+  score = 0;
+  timeLeft = 30;
+  scoreEl.textContent = '0';
+  timerEl.textContent = '30s · sort tokens';
+  buckets.forEach(b => b.classList.remove('over', 'correct'));
+}
+
+function pickToken(){
+  let t;
+  do { t = TOKENS[Math.floor(Math.random() * TOKENS.length)]; }
+  while (lastToken && t.label === lastToken.label && TOKENS.length > 1);
+  lastToken = t;
+  return t;
+}
+
+function placeChipStart(){
+  const heroRect = hero.getBoundingClientRect();
+  const cw = chip.offsetWidth || 140;
+  const x = heroRect.width / 2 - cw / 2 + (Math.random() * 120 - 60);
+  const y = 220 + Math.random() * 60;
+  chip.style.left = x + 'px';
+  chip.style.top = y + 'px';
+}
+
+function spawnChip(){
+  current = pickToken();
+  chipLabel.textContent = current.label;
+  chipSwatch.style.background = current.color;
+  chip.classList.remove('hidden');
+  placeChipStart();
+}
+
+function startGame(){
+  reset();
+  overlay.classList.add('hidden');
+  scrollCue.style.opacity = '0';
+  scrollCue.style.pointerEvents = 'none';
+  resetBtn.classList.remove('hidden');
+  running = true;
+  spawnChip();
+  clearInterval(timerHandle);
+  timerHandle = setInterval(() => {
+    timeLeft -= 1;
+    if (timeLeft <= 0){
+      timeLeft = 0;
+      timerEl.textContent = '0s · sort tokens';
+      endGame();
+      return;
+    }
+    timerEl.textContent = timeLeft + 's · sort tokens';
+  }, 1000);
+}
+
+function endGame(){
+  running = false;
+  clearInterval(timerHandle);
+  chip.classList.add('hidden');
+  resetBtn.classList.add('hidden');
+  overlayTitle.textContent = "Time's up";
+  document.querySelector('#overlay p').textContent =
+    `You sorted ${score} tokens correctly. Play again, or head back to experiments whenever you're ready.`;
+  startBtn.textContent = 'Play again';
+  overlay.classList.remove('hidden');
+  scrollCue.style.opacity = '1';
+  scrollCue.style.pointerEvents = 'all';
+}
+
+function bucketUnderPoint(x, y){
+  return buckets.find(b => {
+    const r = b.getBoundingClientRect();
+    return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+  });
+}
+
+chip.addEventListener('pointerdown', e => {
+  if (!running) return;
+  dragging = true;
+  chip.classList.add('dragging');
+  chip.setPointerCapture(e.pointerId);
+  const r = chip.getBoundingClientRect();
+  offsetX = e.clientX - r.left;
+  offsetY = e.clientY - r.top;
+  hint.style.opacity = '0';
+});
+
+chip.addEventListener('pointermove', e => {
+  if (!dragging) return;
+  const heroRect = hero.getBoundingClientRect();
+  const x = e.clientX - heroRect.left - offsetX;
+  const y = e.clientY - heroRect.top - offsetY;
+  chip.style.left = x + 'px';
+  chip.style.top = y + 'px';
+
+  const over = bucketUnderPoint(e.clientX, e.clientY);
+  buckets.forEach(b => b.classList.toggle('over', b === over));
+});
+
+chip.addEventListener('pointerup', e => {
+  if (!dragging) return;
+  dragging = false;
+  chip.classList.remove('dragging');
+  buckets.forEach(b => b.classList.remove('over'));
+
+  const target = bucketUnderPoint(e.clientX, e.clientY);
+  if (target){
+    const correct = target.dataset.category === current.category;
+    if (correct){
+      score += 1;
+      scoreEl.textContent = score;
+      target.classList.add('correct');
+      setTimeout(() => target.classList.remove('correct'), 300);
+      showFeedback('Nice! ' + current.label, true, target);
+    } else {
+      target.classList.add('wrong');
+      setTimeout(() => target.classList.remove('wrong'), 300);
+      showFeedback(current.label + ' was ' + CATEGORY_NAMES[current.category], false, target);
+    }
+    if (running) spawnChip();
+  }
+});
+
+startBtn.addEventListener('click', startGame);
+resetBtn.addEventListener('click', startGame);
+</script>
+</body>
+</html>
