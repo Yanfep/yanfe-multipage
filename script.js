@@ -4,7 +4,7 @@ document.addEventListener('mousemove', function(e) {
   dot.style.left = e.clientX + 'px';
   dot.style.top = e.clientY + 'px';
 });
-document.querySelectorAll('a, .tile, .experiment-card, .section-link, .chat-toggle, .chat-send, .chat-suggestion').forEach(function(el) {
+document.querySelectorAll('a, .tile, .project-card, .experiment-card, .section-link, .chat-toggle, .chat-send, .chat-suggestion').forEach(function(el) {
   el.addEventListener('mouseenter', function() { dot.classList.add('hover'); });
   el.addEventListener('mouseleave', function() { dot.classList.remove('hover'); });
 });
