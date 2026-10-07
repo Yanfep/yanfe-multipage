@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=projectcovers5">
+<link rel="stylesheet" href="styles.css?v=adirun22">
 </head>
 <body>
 <div class="cursor-dot" id="cursorDot"></div>
@@ -59,14 +59,14 @@
     <div class="sidebar">
       <a href="index.html#work" class="back">← Back</a>
       <a href="#overview" class="section-link active">Overview</a>
+      <a href="#context" class="section-link">Context</a>
       <a href="#problem" class="section-link">Problem</a>
       <a href="#opportunity" class="section-link">Opportunity</a>
       <a href="#why-ai" class="section-link">Why AI?</a>
-      <a href="#hypothesis" class="section-link">The hypothesis</a>
       <a href="#service-design" class="section-link">Service design</a>
-      <a href="#agent-behaviour" class="section-link">Agent behaviour</a>
-      <a href="#prototyping" class="section-link">AI Prototyping &amp; trust</a>
-      <a href="#validating" class="section-link">Validating with real users</a>
+      <a href="#designing-agent" class="section-link">Designing the agent</a>
+      <a href="#phase-1" class="section-link">Phase 1 findings</a>
+      <a href="#phase-2" class="section-link">Phase 2</a>
       <a href="#solution" class="section-link">Solution</a>
       <a href="#impact" class="section-link">Impact</a>
       <a href="#learning" class="section-link">Learning</a>
@@ -80,32 +80,65 @@
           <img src="images/cover-adirun.png?v=c9" alt="" width="1600" height="900" decoding="async">
         </div>
         <div class="meta-row">
-          <div><div class="label">Role</div><div class="value">AI / UX Designer, Product Design</div></div>
-          <div><div class="label">Timeline</div><div class="value"> October – December 2025</div></div>
+          <div><div class="label">Role</div><div class="value">Product Designer</div></div>
+          <div><div class="label">Timeline</div><div class="value">2025</div></div>
           <div><div class="label">Team</div><div class="value">1 Product Designer<br>1 Content Designer<br>1 AI Engineer<br>1 Product Manager</div></div>
-          <div><div class="label">My Skills</div><div class="value">Product Strategy<br>Product Designer<br>Research<br>Prototyping</div></div>
+          <div><div class="label">My Skills</div><div class="value">Product strategy<br>Service design<br>Research<br>AI prototyping</div></div>
         </div>
       </header>
 
       <section id="overview" class="p-section">
         <div class="p-eyebrow">Overview</div>
-        <h2>adiRun turned support from a queue into a conversation.</h2>
-        <p>After Runtastic was discontinued, adidas Running support cases surged, with no self-service containment and resolution times of 2 to 5 days.</p>
-        <p>I designed and helped validate adiRun, an AI support agent created to help customers resolve common issues through conversational self-service.</p>
-        <p>My role was to identify where AI could have the greatest impact, understand how those problems were resolved by Customer Service, translate those processes into agent behaviour, and prototype and validate the conversational experience.</p>
+        <h2>adiRun: an AI support agent that solved problems in the chat, not in a ticket queue.</h2>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-num">95.4%</div>
+            <div class="stat-label">First-contact resolution, up from 81%</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">~90%</div>
+            <div class="stat-label">Of conversations solved without a case</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">~5,000</div>
+            <div class="stat-label">Cases · Jan–Sept 2025 total</div>
+          </div>
+        </div>
+        <p>I found where AI could help most, designed how the agent should work, and tested it until it did—from proof of concept through the US pilot and launch.</p>
+      </section>
+
+      <section id="context" class="p-section">
+        <div class="p-eyebrow">Context</div>
+        <h2>When Runtastic closed, support for the Running app stopped scaling.</h2>
+        <p>The old journey was help pages, a rule-based chatbot, then an email ticket. After Runtastic was discontinued, adidas Running support cases surged into a model that was never built for that load.</p>
+        <figure class="p-figure">
+          <img src="images/adirun-support-journey.png?v=1" alt="Current adidas Running support journey: Help pages, FAQ, rule-based chat looping back to FAQs, and email for app-specific assistance" width="1024" height="941" decoding="async">
+        </figure>
       </section>
 
       <section id="problem" class="p-section">
         <div class="p-eyebrow">Problem</div>
-        <h2>23,500 cases exposed a support model that wasn’t scaling.</h2>
-        <p>In four months, adidas Running received roughly 23,500 support cases, representing around €118,000 in support costs. Many issues were technical and contextual, and customers often waited 2 to 5 days for a resolution by email.</p>
-        <p>Support for the Running app had merged into adidas’ global Customer Service. Users were redirected to shared self-help pages that struggled with usability and findability, and the agents now handling Running-specific cases were still ramping up on the product, so even human-assisted resolutions were slower than before.</p>
-        <p>The challenge was not simply handling more tickets. It was helping customers solve more problems without entering the support queue in the first place.</p>
-        <p>It was to explore whether conversational AI could help customers resolve a meaningful share of these issues directly.</p>
+        <h2>Customers waited days for help, and costs kept growing.</h2>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-num">23,500</div>
+            <div class="stat-label">Support cases in four months</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">~€118k</div>
+            <div class="stat-label">In support costs</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">2–5 days</div>
+            <div class="stat-label">To resolve a case by email</div>
+          </div>
+        </div>
+        <p>Support for the Running app had merged into adidas’ global Customer Service. Shared self-help pages struggled with findability, and agents still ramping on the product meant even human-assisted resolutions were slow.</p>
+        <p>The goal was to solve problems before they became tickets. My role: find where AI could help most, design how the agent should work, and test it until it did.</p>
         <figure class="prototype-embed">
           <iframe
             src="prototypes/adirun-chat.html"
-            title="Existing adidas Running support chat"
+            title="Existing adidas Running support chat before adiRun"
             loading="lazy"
           ></iframe>
         </figure>
@@ -114,143 +147,201 @@
       <section id="opportunity" class="p-section">
         <div class="p-eyebrow">Opportunity</div>
         <h2>I used support data to find where AI could create the most value.</h2>
-        <p>Before designing the agent, I analyzed support data from Salesforce and Power BI to understand where self-service could create the most value.</p>
-        <p>I looked beyond case volume and combined four signals:</p>
+        <p>Before designing the agent, I analyzed Salesforce and Power BI data. High pain meant many cases, rarely solved first time, low NPS, and long handling time, not volume alone.</p>
         <div class="signal-row">
           <div class="signal">Volume</div>
           <div class="signal">First-contact resolution</div>
           <div class="signal">NPS</div>
           <div class="signal">Average handling time</div>
         </div>
-        <p>This surfaced cases that combined high customer pain with high operational impact, including activity-related issues, missing points and subscription problems.</p>
-        <p>This helped identify high-pain, high-impact scenarios where self-service had the strongest potential, rather than trying to automate Customer Service broadly.</p>
         <figure class="p-figure">
-          <img src="images/adirun-cx-metrics.jpg?v=2" alt="Customer experience metrics dashboard: total cases, first-contact resolution, NPS, and non-voice average handling time by support category">
+          <img src="images/adirun-cx-metrics.jpg?v=2" alt="Customer experience metrics by support category: cases, first-contact resolution, NPS, and handling time">
         </figure>
+        <p>Five case types caused most of the pain. All five still took 2–5 days to resolve by email.</p>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Case type</th>
+                <th>Cases</th>
+                <th>Solved first time</th>
+                <th>NPS</th>
+                <th>Handling time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Activity not counted towards challenges</td>
+                <td>1,425</td>
+                <td>68.8%</td>
+                <td>30</td>
+                <td>~9.4 min</td>
+              </tr>
+              <tr>
+                <td>No points earned</td>
+                <td>833</td>
+                <td>65.9%</td>
+                <td>32.5</td>
+                <td>~10 min</td>
+              </tr>
+              <tr>
+                <td>Subscription / version</td>
+                <td>233</td>
+                <td>74.1%</td>
+                <td>10.5</td>
+                <td>~12.2 min</td>
+              </tr>
+              <tr>
+                <td>Redeem issues</td>
+                <td>61</td>
+                <td>81%</td>
+                <td>−28.6</td>
+                <td>~11.9 min</td>
+              </tr>
+              <tr>
+                <td>Balance enquiry</td>
+                <td>193</td>
+                <td>69.2%</td>
+                <td>8.3</td>
+                <td>~11.4 min</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section id="why-ai" class="p-section">
         <div class="p-eyebrow">Why AI?</div>
         <h2>Customers described the same underlying issue in very different ways.</h2>
-        <p>Many support cases ended in similar resolution paths, but customers described the same underlying issue in very different ways.</p>
-        <p>Traditional scripted flows struggled with that variability. Conversational AI created an opportunity to interpret natural language while still following defined support procedures and boundaries.</p>
-      </section>
-
-      <section id="hypothesis" class="p-section">
-        <div class="p-eyebrow">The hypothesis</div>
-        <h2>Could an AI agent resolve a meaningful share of support cases end-to-end while maintaining reliable answers and safe escalation?</h2>
-        <p>We explored the experience around four capabilities:</p>
-        <div class="cap-list">
-          <div class="cap-item">
-            <div class="cap-title">Understand</div>
-            <div class="cap-desc">Can it understand what the customer is actually trying to solve?</div>
-          </div>
-          <div class="cap-item">
-            <div class="cap-title">Context</div>
-            <div class="cap-desc">Can it identify the information required to diagnose the problem?</div>
-          </div>
-          <div class="cap-item">
-            <div class="cap-title">Resolve</div>
-            <div class="cap-desc">Can it follow the appropriate resolution path?</div>
-          </div>
-          <div class="cap-item">
-            <div class="cap-title">Escalate</div>
-            <div class="cap-desc">Can it recognize when it should stop and hand the conversation to a person?</div>
-          </div>
-        </div>
-        <p>The challenge was therefore not simply designing a chatbot interface. It was defining how the system should behave across understanding, uncertainty and resolution.</p>
+        <p>Many support cases ended in similar resolution paths, but customers worded the same problem differently every time. Scripted flows struggled with that variability. Conversational AI could interpret natural language while still following defined procedures and boundaries.</p>
       </section>
 
       <section id="service-design" class="p-section">
         <div class="p-eyebrow">Service design</div>
         <h2>Before designing the AI, I mapped how humans actually solved the problem.</h2>
-        <p>In Cursor, using a script and company data, I analyzed how Customer Service agents diagnosed and resolved the priority cases: what information they needed, what decisions determined the next step and when escalation was required.</p>
-        <p>Those support flows became the behavioural requirements for adiRun.</p>
-        <div class="process-row">
-          <div class="process-step">Customer problem</div>
-          <div class="process-arrow" aria-hidden="true">→</div>
-          <div class="process-step">Required information</div>
-          <div class="process-arrow" aria-hidden="true">→</div>
-          <div class="process-step">Decision</div>
-          <div class="process-arrow" aria-hidden="true">→</div>
-          <div class="process-step">Resolution</div>
-          <div class="process-arrow" aria-hidden="true">→</div>
-          <div class="process-step">Handoff</div>
+        <p>Example: “activity not counted towards challenges” required five manual steps—and could take up to 72 hours for a single case.</p>
+        <figure class="p-figure">
+          <img src="images/adirun-activity-flow.png?v=1" alt="Five-step Customer Service flow for activity not counted, and what the AI would need: evidence, rules, admin check, and handoff" width="1024" height="348" decoding="async">
+        </figure>
+        <p>Those flows became the behavioural requirements for adiRun: ask for the right evidence, know the rules, check the activity in the admin tool, and explain the decision or hand off. Engineering translated the requirements into integrations and agent tools.</p>
+      </section>
+
+      <section id="designing-agent" class="p-section">
+        <div class="p-eyebrow">Designing the agent</div>
+        <h2>Every new support agent gets four things. adiRun needed the same.</h2>
+        <p>Like onboarding a new agent: shared behaviour, case-specific knowledge, system access, and a consistent handoff. My role was to define what each layer needed. Engineering built the knowledge stores, tools, and integrations.</p>
+        <div class="cap-list">
+          <div class="cap-item">
+            <div class="cap-title">01 · Instructions</div>
+            <div class="cap-desc">Rules to follow—how it behaves. Ask for the details each case needs; apply shared rules for uncertainty. Example: “Check the facts before answering.”</div>
+          </div>
+          <div class="cap-item">
+            <div class="cap-title">02 · Knowledge</div>
+            <div class="cap-desc">A manual—what it knows. Approved guidance per case type, kept up to date. Example: challenge rules for valid pace, distance, and GPS.</div>
+          </div>
+          <div class="cap-item">
+            <div class="cap-title">03 · Tools</div>
+            <div class="cap-desc">System access—what it can do. Look up activities in the admin tool; take permitted actions by case type.</div>
+          </div>
+          <div class="cap-item">
+            <div class="cap-title">04 · Handoff</div>
+            <div class="cap-desc">Someone to call—when it stops. Consistent escalation criteria; pass context to Customer Service so the runner never repeats themselves.</div>
+          </div>
         </div>
-        <p>Engineering then translated these requirements into the underlying integrations and agent tools.</p>
+        <p>Together with a Content Designer, we also gave it a persona and a voice: clear, predictable, and useful—not human-sounding for its own sake.</p>
+        <p>adiRun ran in Cognigy: an LLM for understanding and generating responses, instructions and knowledge to guide behaviour, tools and handoff for actions and escalation, and a webchat endpoint in the runner’s chat. I defined the service requirements, prepared knowledge, and configured the initial instructions.</p>
         <figure class="p-figure">
-          <img src="images/adirun-service-design.jpg" alt="Priority support subcategories mapped from current state to a proposed future state, with questions for stakeholders">
+          <img src="images/adirun-meet-agent.jpg" alt="Meet adiRun: running-app expert persona with voice rules for expertise, warmth, pace, and never-do traits">
+        </figure>
+        <figure class="p-figure">
+          <img src="images/adirun-agent-jobs.png" alt="adiRun agent jobs in Cognigy: instructions, tools, and job description">
+        </figure>
+        <figure class="p-figure">
+          <img src="images/adirun-knowledge-stores.png" alt="Knowledge stores used by adiRun: Adidas, Runtastic, and a test store">
         </figure>
       </section>
 
-      <section id="agent-behaviour" class="p-section">
-        <div class="p-eyebrow">Agent behaviour</div>
-        <h2>We translated support procedures into conversational behaviour.</h2>
-        <p>Together with a Content Designer, I translated those support flows into conversational behaviour.</p>
-        <p>We defined how adiRun should:</p>
-        <ul class="p-list">
-          <li>Diagnose a problem before jumping to a solution</li>
-          <li>Request missing information</li>
-          <li>Communicate what it was doing</li>
-          <li>Avoid presenting assumptions as facts</li>
-          <li>Explain next steps clearly</li>
-          <li>Hand off when it could not safely continue</li>
-        </ul>
-        <p>The objective was not to make the AI sound human. It was to make its behaviour clear, predictable and useful.</p>
-        <figure class="p-figure">
-          <img src="images/adirun-meet-agent.jpg" alt="Meet adiRun: a specialized running-app expert persona with voice rules for expertise, warmth, pace, and never-do traits">
-        </figure>
-        <figure class="p-figure">
-          <img src="images/adirun-agent-jobs.png" alt="adiRun agent jobs: Adidas Running Expert instructions, tools, and job description in the agent configuration">
-        </figure>
-      </section>
-
-      <section id="prototyping" class="p-section">
-        <div class="p-eyebrow">AI Prototyping &amp; trust</div>
-        <h2>The failures were more useful than the perfect conversations.</h2>
-        <p>I built and tested the proof of concept in Cognigy, iterating the agent's instructions against realistic support conversations rather than only the ones that worked well.</p>
-        <p>Early versions overstepped in predictable ways. Asked about a sore knee, the agent would suggest stretches. Asked for a training plan, it would recommend one. Neither was something adiRun should decide on its own.</p>
-        <p>Each failure became a rule. Questions about health or injury were redirected to a professional instead of answered. Questions about training were redirected to the app's pre-set workouts instead of improvised. Answers had to stay grounded in what the agent actually knew, not filled in from a guess, and adiRun had to confirm the outcome with the customer before closing a case rather than assume it.</p>
-        <figure class="p-figure">
-          <img src="images/adirun-agent-persona.png" alt="adiRun agent persona: special instructions for tone, safety, troubleshooting, and contact profile access">
-        </figure>
-        <figure class="p-figure">
-          <img src="images/adirun-knowledge-stores.png" alt="Knowledge Stores used by adiRun: Adidas, Runtastic, and a test Runtastic store">
-        </figure>
-      </section>
-
-      <section id="validating" class="p-section">
-        <div class="p-eyebrow">Validating with real users</div>
-        <h2>A June 2025 study showed how much of the experience still needed to change.</h2>
-        <p>Before the pilot, adiRun was tested with 7 runners in the UK, US and Spain, split between people who already used tools like ChatGPT regularly and people who didn’t. All were active runners who didn’t currently track their runs.</p>
-        <p>The sessions confirmed something specific: users judged adiRun against ChatGPT, not against a typical support chatbot. A reply that felt rigid or scripted was dismissed quickly, even when the information behind it was correct.</p>
-        <p>Two issues stood out as high severity.</p>
-        <p><strong>No loading indicator.</strong> Users couldn’t tell whether adiRun was thinking or had stalled, and some refreshed the page out of uncertainty, losing their conversation in the process.</p>
+      <section id="phase-1" class="p-section">
+        <div class="p-eyebrow">Phase 1 findings</div>
+        <h2>The first version answered, but it didn’t resolve.</h2>
+        <p>I built and tested the proof of concept in Cognigy against realistic support conversations. The failures were more useful than the perfect ones.</p>
+        <div class="cap-list">
+          <div class="cap-item">
+            <div class="cap-title">In my tests · It overstepped</div>
+            <div class="cap-desc">Suggested stretches for a sore knee. Recommended a training plan. Filled gaps with guesses. Closed cases too early. Missing: clear rules to follow.</div>
+          </div>
+          <div class="cap-item">
+            <div class="cap-title">With 7 runners · It didn’t earn trust</div>
+            <div class="cap-desc">They compared it to ChatGPT, not a support bot. Generic replies were dismissed even when correct. No loading indicator, so they refreshed. Conversations weren’t saved, so a refresh erased everything. Missing: facts, system access, and a real hand-off.</div>
+          </div>
+        </div>
         <p class="p-quote">“I wouldn’t really have known where to wait there.” — Male, UK, 22s</p>
-        <p><strong>No conversation persistence.</strong> A refresh, intentional or not, wiped the context. Users who’d already invested time explaining their issue had to start over.</p>
         <p class="p-quote">“I don’t have the details of what I might be doing anymore. It could be quite a large problem there.” — Male, UK, 22s</p>
-        <p>Two more came back as medium severity: answers were often correct but hard to scan, arriving as a wall of text instead of a clear structure, and sometimes too vague for users who wanted a specific, task-oriented response. One issue was lower severity but still worth fixing: adiRun would occasionally answer questions entirely outside its scope, like defining a math term, instead of saying so and redirecting.</p>
-        <p>These findings mapped to five principles for a useful assistant: communicate its limits, stay consistent, stay visually present, show it’s working, and structure its answers clearly. Measured against them in June 2025, adiRun met almost none consistently.</p>
-        <p>Those findings shaped several UI refinements ahead of the pilot: visible loading states, persistent conversations, and clearer response formatting.</p>
+        <p>Each failure became a rule: don’t improvise on health or training, stay grounded in what the agent knows, confirm outcomes before closing, and show the system working.</p>
+        <figure class="p-figure">
+          <img src="images/adirun-agent-persona.png" alt="adiRun special instructions for tone, safety, troubleshooting, and contact profile access">
+        </figure>
+      </section>
+
+      <section id="phase-2" class="p-section">
+        <div class="p-eyebrow">Phase 2</div>
+        <h2>So we kept adding what our agents know—and what the experience needed to earn trust.</h2>
+        <div class="cap-list">
+          <div class="cap-item">
+            <div class="cap-title">Thinking state</div>
+            <div class="cap-desc">In testing, no loading indicator meant runners refreshed the page. I designed a “thinking” state so they know adiRun is working.</div>
+          </div>
+          <div class="cap-item">
+            <div class="cap-title">Saved conversations</div>
+            <div class="cap-desc">A refresh erased everything. Persistent conversations meant nothing was lost.</div>
+          </div>
+          <div class="cap-item">
+            <div class="cap-title">Handoff with an AI summary</div>
+            <div class="cap-desc">Hand-offs used to send runners to email with agents starting from zero. The new handoff passed an AI summary so Customer Service could solve it at first contact.</div>
+          </div>
+        </div>
+        <p>I also made adiRun the first step when users asked for help in the app.</p>
+        <p><strong>Before:</strong> Running app → Contact Us → email form → email case → 2–5 days.</p>
+        <div class="process-row">
+          <div class="process-step">Running app</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Contact Us</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Email form</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Email case</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">2–5 days</div>
+        </div>
+        <p><strong>After:</strong> Running app → adiRun → solved in chat in minutes—or a case with an AI summary for the agent.</p>
+        <div class="process-row">
+          <div class="process-step">Running app</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">adiRun</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Solved in chat</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Or case + AI summary</div>
+        </div>
       </section>
 
       <section id="solution" class="p-section">
         <div class="p-eyebrow">Solution</div>
-        <h2>adiRun: a conversational agent that diagnoses, resolves and knows when to hand off</h2>
-        <p>adiRun sits inside the support conversation flow. It asks for the missing information before assuming anything, follows the same resolution logic Customer Service would use, and confirms the outcome before closing the conversation. When it can't resolve a case safely, it hands off to a person with the context already gathered, so the customer never has to repeat themselves.</p>
+        <h2>The second version diagnoses, takes action, confirms—or hands off with context.</h2>
+        <p>adiRun asks for missing information before assuming anything, follows the same resolution logic Customer Service would use, and confirms the outcome before closing. When it can’t continue safely, it hands off to a person with the context already gathered.</p>
         <figure class="prototype-embed">
           <iframe
             src="prototypes/adirun-chat-v2.html"
-            title="adiRun support conversation"
+            title="adiRun Phase 2 support conversation"
             loading="lazy"
           ></iframe>
         </figure>
       </section>
 
       <section id="impact" class="p-section">
-        <div class="p-eyebrow">Impact</div>
-        <h2>The pilot moved support from a 2–5 day queue toward conversational resolution.</h2>
-        <p>Before adiRun, unresolved issues typically entered an email support queue:</p>
+        <div class="p-eyebrow">Impact · MVP &amp; US pilot</div>
+        <h2>Runners get an answer in one conversation, not in 2–5 days.</h2>
+        <p>Before adiRun:</p>
         <div class="process-row">
           <div class="process-step">Customer asks for help</div>
           <div class="process-arrow" aria-hidden="true">→</div>
@@ -262,8 +353,7 @@
           <div class="process-arrow" aria-hidden="true">→</div>
           <div class="process-step">Email resolution</div>
         </div>
-        <p>Typical resolution time: 2–5 days</p>
-        <p>With adiRun, suitable issues could be handled within the same interaction:</p>
+        <p>With adiRun:</p>
         <div class="process-row">
           <div class="process-step">Customer describes the problem</div>
           <div class="process-arrow" aria-hidden="true">→</div>
@@ -271,36 +361,44 @@
           <div class="process-arrow" aria-hidden="true">→</div>
           <div class="process-step">Gathers context</div>
           <div class="process-arrow" aria-hidden="true">→</div>
-          <div class="process-step">Follows the resolution path</div>
+          <div class="process-step">Takes action</div>
           <div class="process-arrow" aria-hidden="true">→</div>
           <div class="process-step">Confirms the outcome</div>
         </div>
-        <p>If the agent could not continue safely, Customer Service remained available. The goal was not to remove humans from support, but to involve them where human judgment added value.</p>
-        <p>The US pilot tested the experience with real support cases:</p>
-        <div class="stat-row">
+        <p>If adiRun can’t continue safely, Customer Service is still there. The goal was not to remove humans, but to involve them where their judgement adds value.</p>
+        <div class="stat-row stat-row-4">
           <div class="stat">
-            <div class="stat-num">1,426</div>
-            <div class="stat-label">Support cases</div>
+            <div class="stat-num">~90%</div>
+            <div class="stat-label">Containment · from 0%</div>
           </div>
           <div class="stat">
-            <div class="stat-num">68.9%</div>
-            <div class="stat-label">First-contact resolution</div>
+            <div class="stat-num">Minutes</div>
+            <div class="stat-label">Time to resolution · from 2–5 days</div>
           </div>
           <div class="stat">
-            <div class="stat-num">30</div>
-            <div class="stat-label">NPS</div>
+            <div class="stat-num">95.4%</div>
+            <div class="stat-label">First-contact resolution · from 81%</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">~5,000</div>
+            <div class="stat-label">Cases Jan–Sept 2025 · from ~5,900 / month</div>
           </div>
         </div>
-        <p>The pilot showed that a meaningful share of support interactions could be handled conversationally rather than immediately entering the existing email process.</p>
-        <p>The broader business target was 75–85% containment for suitable scenarios, with the ambition of reducing resolution time from days to minutes.</p>
+        <p>After launch (Jan–Sept 2025), fewer cases reached Customer Service, answers arrived faster, and first-contact resolution rose sharply. The initiative is now paused while adidas moves from Cognigy to Amazon.</p>
       </section>
 
       <section id="learning" class="p-section">
         <div class="p-eyebrow">Learning</div>
-        <h2>Designing AI meant designing when the system should stop.</h2>
-        <p>The hardest part was not generating an answer. It was deciding when the agent had enough information to continue and when it needed to hand off.</p>
-        <p>Working on adiRun shifted my focus from designing what an assistant says to designing what it understands, what information it still needs, what boundaries it operates within and how it behaves under uncertainty.</p>
-        <p>Designing AI meant designing behaviour, boundaries and handoff, not just conversation.</p>
+        <h2>Useful AI starts with the right knowledge.</h2>
+        <p>I learned to organise support knowledge around user problems—so adiRun could help resolve them in chat instead of sending users back to email.</p>
+        <div class="process-row">
+          <div class="process-step">Gather the relevant support knowledge</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Organise it around user problems</div>
+          <div class="process-arrow" aria-hidden="true">→</div>
+          <div class="process-step">Make it useful for resolving cases</div>
+        </div>
+        <p>Designing AI meant designing behaviour, boundaries, and handoff—and turning scattered information into something the agent could actually use.</p>
       </section>
     </div>
   </div>

@@ -478,6 +478,9 @@ h1 em { font-style: italic; }
   gap: 12px;
   margin: 8px 0 24px;
 }
+.stat-row-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
 .stat {
   padding: 16px 14px;
   border: 1px solid var(--line);
@@ -491,6 +494,51 @@ h1 em { font-style: italic; }
   margin-bottom: 4px;
 }
 .stat-label { font-size: 13px; color: var(--muted); }
+
+.process-step .process-note {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.data-table-wrap {
+  margin: 8px 0 24px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+}
+.data-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.data-table th,
+.data-table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-top: 1px solid var(--line);
+  vertical-align: top;
+}
+.data-table thead th {
+  border-top: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--faint);
+  background: #F6F6F6;
+}
+.data-table tbody td:first-child {
+  font-weight: 500;
+  color: var(--fg);
+}
+.data-table tbody td {
+  color: var(--muted);
+}
 
 .flows-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .flow-card .placeholder-block { aspect-ratio: 16 / 10; height: auto; margin-top: 0; margin-bottom: 16px; }
@@ -508,6 +556,7 @@ h1 em { font-style: italic; }
   h1.hero { font-size: 38px; }
   .about-heading { font-size: 38px; }
   .projects { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
+  .stat-row-4 { grid-template-columns: 1fr 1fr; }
   .experiments-grid { grid-template-columns: 1fr 1fr; }
   .tile { min-height: 220px; }
   .tile-title { font-size: 14px; }
@@ -554,7 +603,8 @@ h1 em { font-style: italic; }
   .cap-list { grid-template-columns: 1fr; }
   .process-arrow { display: none; }
   .process-row { display: grid; grid-template-columns: 1fr; }
-  .stat-row { grid-template-columns: 1fr; }
+  .stat-row,
+  .stat-row-4 { grid-template-columns: 1fr; }
 }
 
 /* Orange hover on all interactive text — !important because several
